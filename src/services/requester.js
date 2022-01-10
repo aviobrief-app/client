@@ -19,7 +19,10 @@ const request = async (method, url, data) => {
         options.body = JSON.stringify(data);
     }
 
-    return fetch(url, options).then((res) => res.json());
+    return fetch(url, options).then(async (res) => {
+        console.log(await res.json());
+        return res.json();
+    });
 };
 
 export const get = request.bind(null, 'GET');

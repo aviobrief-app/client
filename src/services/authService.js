@@ -12,6 +12,17 @@ export const login = async () => {
     }
 }
 
+export const loginJWT = async (data) => {
+    try {
+        const result = await requester.post(api.loginAuth(), data);
+        if(!result.ok) { throw result }
+        return result;
+    } catch(err) {
+        console.log('[authService.js] login auth failed!');
+        return err.message ? err.message : 'Login auth failed!';
+    }
+}
+
 export const getToken = () => {
     try {
         let token = 'Basic ' + window.btoa("petar.petkov@mailinator.com" + ":" + "111111");
