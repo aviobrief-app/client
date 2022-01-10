@@ -10,6 +10,7 @@ const request = async (method, url, data) => {
         headers: {
             ...(token ? { Authorization: token } : {}),
         },
+
     };
 
     //this will add header and body to the request if we pass any data object to the requester

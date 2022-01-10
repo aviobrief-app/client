@@ -1,15 +1,17 @@
 import './App.css';
+import * as authService from 'services/authService';
 import * as userService from 'services/userService';
 
 function App() {
 
   const onFetchSpringServer = () => {
 
-    console.log('hello world!');
+    authService.login()
+      .then((res) => console.log(res));
 
-    userService.getAllUsers()
-      .then(users => console.log(users))
-      .catch(err => console.log(err));
+    // userService.getAllUsers()
+    //   .then(users => console.log(users))
+    //   .catch(err => console.log(err));
   }
 
 

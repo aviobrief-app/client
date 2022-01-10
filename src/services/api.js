@@ -5,5 +5,8 @@ const springBaseUrls = {
 
 const springBaseUrl = springBaseUrls[process.env.NODE_ENV.trim()];
 
+/* auth related */
+export const login = () => `${springBaseUrl}/basic-auth`;
+
 /* user related */
 export const getAllUsers = () => `${springBaseUrl}/users`;
