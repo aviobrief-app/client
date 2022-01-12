@@ -1,8 +1,8 @@
 import * as authService from 'services/authService';
 
 const request = async (method, url, data) => {
-    let token = await authService.getToken();
-    // console.log(`[request.js] token: ${token}`);
+    let token = authService.getToken();
+    console.log(`[request.js] token: ${token}`);
 
     //this will add token to the request, if there is logged in user
     let options = {
@@ -20,7 +20,6 @@ const request = async (method, url, data) => {
     }
 
     return fetch(url, options).then(async (res) => {
-        console.log(await res.json());
         return res.json();
     });
 };

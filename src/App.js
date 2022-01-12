@@ -1,35 +1,38 @@
 import './App.css';
+import { useContext } from 'react';
+import { useAuth } from 'contexts/AuthContext';
+
 import * as authService from 'services/authService';
 import * as userService from 'services/userService';
 
 function App() {
 
-  const onFetchSpringServer = () => {
+  const authContext = useAuth();
 
-    authService.login()
-      .then((res) => console.log(res));
-
-    // userService.getAllUsers()
-    //   .then(users => console.log(users))
-    //   .catch(err => console.log(err));
-  }
-
-  const onFetchSpringAuth = () => {
+  const onLoginClick = () => {
 
     const data = { username: "petar.petkov@mailinator.com", password: "111111", };
     authService.loginJWT(data)
-      .then((res) => console.log(res));
+      .then((response) => {
+        console.log(response);
+        authContext.setCurrentUserClaims(response);
+      })
+      .catch((error) => { console.log(error) })
 
-    // userService.getAllUsers()
-    //   .then(users => console.log(users))
-    //   .catch(err => console.log(err));
+
+  }
+
+  const onGetUsersClick = async () => {
+    const users = await userService.getAllUsers();
+    console.log(users);
   }
 
 
   return (
     <div className="App">
-      <button onClick={onFetchSpringServer}>FETCH SPRING SERVER</button>
-      <button onClick={onFetchSpringAuth}>FETCH SPRING AUTH</button>
+      <button onClick={onLoginClick}>LOGIN petar.petkov@mailinator.com</button>
+      <br></br>
+      <button onClick={onGetUsersClick}>Get Users</button>
     </div>
   );
 }

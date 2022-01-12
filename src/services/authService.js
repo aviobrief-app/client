@@ -1,5 +1,7 @@
+import jwt_decode from "jwt-decode";
 import * as requester from 'services/requester';
 import * as api from 'services/api';
+
 
 export const login = async () => {
     try {
@@ -15,8 +17,11 @@ export const login = async () => {
 export const loginJWT = async (data) => {
     try {
         const result = await requester.post(api.loginAuth(), data);
-        if(!result.ok) { throw result }
-        return result;
+        if(!result.accessToken) { throw result }
+        sessionStorage.setItem('ACCESS_TOKEN', result.accessToken);
+        const decodedJwt = jwt_decode(result.accessToken);
+
+        return decodedJwt;
     } catch(err) {
         console.log('[authService.js] login auth failed!');
         return err.message ? err.message : 'Login auth failed!';
@@ -25,7 +30,7 @@ export const loginJWT = async (data) => {
 
 export const getToken = () => {
     try {
-        let token = 'Basic ' + window.btoa("petar.petkov@mailinator.com" + ":" + "111111");
+        let token = 'Bearer ' + sessionStorage.getItem('ACCESS_TOKEN');
         return token;
     } catch(err) {
         console.log('[authService.js] getToken() failed!');
