@@ -23,7 +23,7 @@ export const loginJWT = async (data) => {
 
         return decodedJwt;
     } catch(err) {
-        console.log('[authService.js] login auth failed!');
+        console.log(JSON.parse(err.errors[0].rejectedValue));
         return err.message ? err.message : 'Login auth failed!';
     }
 }
