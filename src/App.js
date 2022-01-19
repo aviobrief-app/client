@@ -11,7 +11,7 @@ function App() {
 
   const onLoginClick = () => {
 
-    const data = { username: "petar.petkov@mailinator.co", password: "111111", };
+    const data = { username: "petar.petkov@mailinator.com", password: "111111", };
     authService.loginJWT(data)
       .then((response) => {
         console.log(response);
@@ -23,8 +23,9 @@ function App() {
   }
 
   const onGetUsersClick = async () => {
-    const users = await userService.getAllUsers();
-    console.log(users);
+    userService.getAllUsers()
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
   }
 
 
