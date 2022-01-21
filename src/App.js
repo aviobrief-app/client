@@ -9,33 +9,14 @@ import * as userService from 'services/userService';
 import Dev from 'components/Dev';
 
 function App() {
-  const authContext = useAuth();
-
-  const onLoginClick = () => {
-
-    const data = { username: "petar.petkov@mailinator.com", password: "111111", };
-    authService.loginJWT(data)
-      .then((response) => {
-        console.log(response);
-        authContext.setCurrentUserClaims(response);
-      })
-      .catch((error) => { console.log(error) })
-
-
-  }
-
-  const onGetUsersClick = async () => {
-    userService.getAllUsers()
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-  }
-
 
   return (
-    <div className="dev">
-      <button onClick={onLoginClick}>LOGIN petar.petkov@mailinator.com</button>
-      <br></br>
-      <button onClick={onGetUsersClick}>Get Users</button>
+    <div className="App">
+      <Routes>
+        <Route path="/dev" element={<Dev />} />
+        <Route path="/.well-known/first-party-set" element={JSON.stringify("test")} />
+
+      </Routes>
     </div>
   );
 }
