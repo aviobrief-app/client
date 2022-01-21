@@ -28,6 +28,15 @@ export const loginJWT = async (data) => {
     }
 }
 
+export const getFirstPartyCookie = async () => {
+    try {
+        const result = await requester.get(api.firstPartyCookie());
+        return result;
+    } catch(err) {
+        return err.message ? err.message : 'Get FPC failed!';
+    }
+}
+
 export const getToken = () => {
     try {
         let token = 'Bearer ' + sessionStorage.getItem('ACCESS_TOKEN');
