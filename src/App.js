@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom"
 import './App.css';
 import { useContext } from 'react';
 import { useAuth } from 'contexts/AuthContext';
@@ -5,8 +6,9 @@ import { useAuth } from 'contexts/AuthContext';
 import * as authService from 'services/authService';
 import * as userService from 'services/userService';
 
-function App() {
+import Dev from 'components/Dev';
 
+function App() {
   const authContext = useAuth();
 
   const onLoginClick = () => {
@@ -30,7 +32,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="dev">
       <button onClick={onLoginClick}>LOGIN petar.petkov@mailinator.com</button>
       <br></br>
       <button onClick={onGetUsersClick}>Get Users</button>

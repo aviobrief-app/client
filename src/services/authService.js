@@ -36,3 +36,13 @@ export const getToken = () => {
         console.log('[authService.js] getToken() failed!');
     }
 };
+
+export const getCsrfToken = () => {
+    try {
+        let csrfToken = sessionStorage.getItem('x-csrf-token');
+        console.log(csrfToken);
+        return csrfToken;
+    } catch(err) {
+        console.log('[authService.js] getCsrfToken() failed!');
+    }
+};
