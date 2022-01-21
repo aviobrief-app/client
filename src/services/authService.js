@@ -23,7 +23,7 @@ export const loginJWT = async (data) => {
 
         return decodedJwt;
     } catch(err) {
-        console.log('[authService.js] login auth failed!');
+        console.log(JSON.parse(err.errors[0].rejectedValue));
         return err.message ? err.message : 'Login auth failed!';
     }
 }
@@ -34,5 +34,15 @@ export const getToken = () => {
         return token;
     } catch(err) {
         console.log('[authService.js] getToken() failed!');
+    }
+};
+
+export const getCsrfToken = () => {
+    try {
+        let csrfToken = sessionStorage.getItem('x-csrf-token');
+        console.log(csrfToken);
+        return csrfToken;
+    } catch(err) {
+        console.log('[authService.js] getCsrfToken() failed!');
     }
 };
