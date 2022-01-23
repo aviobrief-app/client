@@ -1,6 +1,6 @@
 const springBaseUrls = {
     development: 'http://localhost:8000',
-    production: 'todo',
+    production: 'https://aviobrief-spring-server.herokuapp.com',
 };
 
 const springBaseUrl = springBaseUrls[process.env.NODE_ENV.trim()];
