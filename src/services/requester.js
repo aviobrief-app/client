@@ -11,7 +11,7 @@ const request = async (method, url, data) => {
         withCredentials: true,
         headers: {
             ...(token ? { Authorization: token } : {}),
-            ...(csrfToken ? { 'X-CSRF-TOKEN': csrfToken } : {}),
+            ...(csrfToken ? { 'x-csrf-token': csrfToken } : {}),
         },
         credentials: 'include',
 

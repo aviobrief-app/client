@@ -2,23 +2,14 @@ import jwt_decode from "jwt-decode";
 import * as requester from 'services/requester';
 import * as api from 'services/api';
 
-
-export const login = async () => {
-    try {
-        const result = await requester.get(api.login());
-        if(!result.ok) { throw result }
-        return result;
-    } catch(err) {
-        console.log('[authService.js] login failed!');
-        return err.message ? err.message : 'Login failed!';
-    }
-}
+const ACCESS_TOKEN = 'ACCESS-TOKEN';
+const X_CSRF_TOKEN = 'x-csrf-token';
 
 export const loginJWT = async (data) => {
     try {
         const result = await requester.post(api.loginAuth(), data);
         if(!result.accessToken) { throw result }
-        sessionStorage.setItem('ACCESS_TOKEN', result.accessToken);
+        sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
         const decodedJwt = jwt_decode(result.accessToken);
 
         return decodedJwt;
@@ -39,7 +30,7 @@ export const getFirstPartyCookie = async () => {
 
 export const getToken = () => {
     try {
-        let token = 'Bearer ' + sessionStorage.getItem('ACCESS_TOKEN');
+        let token = 'Bearer ' + sessionStorage.getItem(ACCESS_TOKEN);
         return token;
     } catch(err) {
         console.log('[authService.js] getToken() failed!');
@@ -48,7 +39,7 @@ export const getToken = () => {
 
 export const getCsrfToken = () => {
     try {
-        let csrfToken = sessionStorage.getItem('x-csrf-token');
+        let csrfToken = sessionStorage.getItem(X_CSRF_TOKEN);
         console.log(csrfToken);
         return csrfToken;
     } catch(err) {
