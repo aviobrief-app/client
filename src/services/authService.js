@@ -46,3 +46,14 @@ export const getCsrfToken = () => {
         console.log('[authService.js] getCsrfToken() failed!');
     }
 };
+
+export const getLocation = async () => {
+    try {
+        const response = await fetch('https://geolocation-db.com/json/');
+        const geoData = await response.json();
+        const { IPv4 } = geoData;
+        return IPv4;
+    } catch(err) {
+        console.log('[authService.js] getLocation() failed!');
+    }
+};

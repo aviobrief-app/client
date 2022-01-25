@@ -3,7 +3,8 @@ import * as authService from 'services/authService';
 const request = async (method, url, data) => {
     let token = authService.getToken();
     const csrfToken = authService.getCsrfToken();
-    console.log(`[request.js] token: ${token}`);
+    const getLocationIp = await authService.getLocation();
+    // console.log(`[request.js] token: ${token}`);
 
     //this will add token to the request, if there is logged in user
     let options = {
@@ -12,6 +13,7 @@ const request = async (method, url, data) => {
         headers: {
             ...(token ? { Authorization: token } : {}),
             ...(csrfToken ? { 'x-csrf-token': csrfToken } : {}),
+            ...(getLocationIp ? { 'x-forwarded-for': getLocationIp } : {}),
         },
         credentials: 'include',
 
@@ -26,7 +28,7 @@ const request = async (method, url, data) => {
     return fetch(url, options).then(async (res) => {
         if(!authService.getCsrfToken()) {
             for(var pair of res.headers.entries()) {
-                console.log(pair);
+                // console.log(pair);
                 if(pair[0] === 'x-csrf-token') {
                     sessionStorage.setItem(pair[0], pair[1]);
                 }
