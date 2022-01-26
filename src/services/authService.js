@@ -2,8 +2,10 @@ import jwt_decode from "jwt-decode";
 import * as requester from 'services/requester';
 import * as api from 'services/api';
 
+import * as logger from 'utils/notifyingUX/logger';
 import * as toaster from 'utils/notifyingUX/toaster';
-import { toastMessages } from 'utils/notifyingUX/UXmessages';
+import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
+
 
 const ACCESS_TOKEN = 'ACCESS-TOKEN';
 const X_CSRF_TOKEN = 'x-csrf-token';
@@ -54,7 +56,7 @@ export const getToken = () => {
         let token = 'Bearer ' + sessionStorage.getItem(ACCESS_TOKEN);
         return token;
     } catch(err) {
-        console.log('[authService.js] getToken() failed!');
+        logger.logWarning(consoleMessages.GET_AUTH_TOKEN_FAIL);
     }
 };
 
@@ -63,7 +65,7 @@ export const getCsrfToken = () => {
         let csrfToken = sessionStorage.getItem(X_CSRF_TOKEN);
         return csrfToken;
     } catch(err) {
-        console.log('[authService.js] getCsrfToken() failed!');
+        logger.logWarning(consoleMessages.GET_CSRF_TOKEN_FAIL);
     }
 };
 
@@ -74,7 +76,7 @@ const fetchDeviceLocationIp = async () => {
         const { IPv4 } = geoData;
         return IPv4;
     } catch(err) {
-        console.log('[authService.js] getLocation() failed!');
+        logger.logWarning(consoleMessages.FETCH_DEVICE_LOCATION_IP_FAIL);
     }
 };
 
@@ -83,6 +85,6 @@ export const getLocationIp = () => {
         let deviceLocationIp = sessionStorage.getItem('device-location-ip');
         return deviceLocationIp;
     } catch(err) {
-        console.log('[authService.js] getLocationIp() failed!');
+        logger.logWarning(consoleMessages.GET_DEVICE_LOCATION_IP_FAIL);
     }
 };
