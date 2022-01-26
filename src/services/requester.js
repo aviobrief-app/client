@@ -3,7 +3,7 @@ import * as authService from 'services/authService';
 const request = async (method, url, data) => {
     let token = authService.getToken();
     const csrfToken = authService.getCsrfToken();
-    const getLocationIp = await authService.getLocation();
+    const getLocationIp = await authService.getLocationIp();
     // console.log(`[request.js] token: ${token}`);
 
     //this will add token to the request, if there is logged in user

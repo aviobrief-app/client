@@ -33,14 +33,22 @@ const Dev = () => {
             .catch(error => console.log(error));
     }
 
+    const onLogoutClick = async () => {
+        authService.logout()
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
+
 
     return (
         <div className="dev">
-            <button onClick={onLoginClick}>LOGIN petar.petkov@mailinator.com</button>
+            <button onClick={onLoginClick}>LOGIN</button>
             <br></br>
             <button onClick={onGetUsersClick}>Get Users</button>
             <br></br>
             <button onClick={onGetFPCclick}>Get First Party Cookie</button>
+            <br></br>
+            <button onClick={onLogoutClick}>LOGOUT</button>
         </div>
     );
 }
