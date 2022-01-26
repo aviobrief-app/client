@@ -2,6 +2,9 @@ import jwt_decode from "jwt-decode";
 import * as requester from 'services/requester';
 import * as api from 'services/api';
 
+import * as toaster from 'utils/notifyingUX/toaster';
+import { toastMessages } from 'utils/notifyingUX/UXmessages';
+
 const ACCESS_TOKEN = 'ACCESS-TOKEN';
 const X_CSRF_TOKEN = 'x-csrf-token';
 
@@ -13,8 +16,9 @@ export const loginJWT = async (data) => {
         const result = await requester.post(api.loginAuth(), data);
         if(!result.accessToken) { throw result }
         sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
-
         const decodedJwt = jwt_decode(result.accessToken);
+
+        toaster.toastSuccess(toastMessages.LOGIN_OK);
         return decodedJwt;
     } catch(err) {
         console.log(JSON.parse(err.errors[0].rejectedValue));
@@ -28,6 +32,8 @@ export const logout = async (data) => {
         sessionStorage.removeItem(ACCESS_TOKEN);
         sessionStorage.removeItem('x-csrf-token');
         sessionStorage.removeItem('device-location-ip');
+
+        toaster.toastSuccess(toastMessages.LOGOUT_OK);
         return result;
     } catch(err) {
         return err.message ? err.message : 'Logout failed!';
