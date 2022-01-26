@@ -27,6 +27,7 @@ export const logout = async (data) => {
         const result = await requester.post(api.logout(), data);
         sessionStorage.removeItem(ACCESS_TOKEN);
         sessionStorage.removeItem('x-csrf-token');
+        sessionStorage.removeItem('device-location-ip');
         return result;
     } catch(err) {
         return err.message ? err.message : 'Logout failed!';
