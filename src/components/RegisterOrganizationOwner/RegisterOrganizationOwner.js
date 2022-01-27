@@ -1,24 +1,22 @@
-import { Link } from 'react-router-dom'
-import './RegisterOrganizationOwner.scss';
+import { ReactComponent as PinkBackground } from './assets/Group 1.svg';
+import { ReactComponent as BasketWithItems } from './assets/Group 2.svg';
+import { ReactComponent as Human } from './assets/Group 3.svg';
 
+import RegisterOwnerForm from './RegisterOwnerForm/RegisterOwnerForm';
+
+
+import './RegisterOrganizationOwner.scss';
 const RegisterOrganizationOwner = () => {
 
 
     return (
         <section className="register-organization-owner">
-            <aside className="graphic">
-                graphic
+            <aside className="left-graphics">
+                <PinkBackground className="pink-background" />
+                <BasketWithItems className="basket" />
+                <Human className="human" />
             </aside>
-            <section className="register-form">
-                <div className="top-icon"></div>
-                <form className="register-form"></form>
-                <button type="button" className="register-button"></button>
-                <div className="bottom-disclaimer">
-                    <p className="question"></p>
-                    <Link to="/" className="login-link">Login here.</Link>
-                </div>
-
-            </section>
+            <RegisterOwnerForm />
         </section>
     )
 }

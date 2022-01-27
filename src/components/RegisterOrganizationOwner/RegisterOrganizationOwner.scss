@@ -1,0 +1,26 @@
+.register-organization-owner {
+  padding: 50px;
+  display: flex;
+  width: 100%;
+}
+
+.left-graphics {
+  width: 55%;
+  position: relative;
+  .pink-background {
+  }
+
+  .basket {
+    position: absolute;
+    left: 170px;
+    top: 130px;
+  }
+
+  .human {
+    position: absolute;
+    top: 100px;
+    left: -10px;
+    height: 250px;
+    width: auto;
+  }
+}
