@@ -31,6 +31,7 @@ export const loginJWT = async (data) => {
 export const logout = async (data) => {
     try {
         const result = await requester.post(api.logout(), data);
+        if(!result.ok) { throw result }
         sessionStorage.removeItem(ACCESS_TOKEN);
         sessionStorage.removeItem('x-csrf-token');
         sessionStorage.removeItem('device-location-ip');
@@ -39,15 +40,6 @@ export const logout = async (data) => {
         return result;
     } catch(err) {
         return err.message ? err.message : 'Logout failed!';
-    }
-}
-
-export const getFirstPartyCookie = async () => {
-    try {
-        const result = await requester.get(api.firstPartyCookie());
-        return result;
-    } catch(err) {
-        return err.message ? err.message : 'Get FPC failed!';
     }
 }
 
@@ -88,3 +80,17 @@ export const getLocationIp = () => {
         logger.logWarning(consoleMessages.GET_DEVICE_LOCATION_IP_FAIL);
     }
 };
+
+
+/*
+
+export const getFirstPartyCookie = async () => {
+    try {
+        const result = await requester.get(api.firstPartyCookie());
+        return result;
+    } catch(err) {
+        return err.message ? err.message : 'Get FPC failed!';
+    }
+}
+
+*/
