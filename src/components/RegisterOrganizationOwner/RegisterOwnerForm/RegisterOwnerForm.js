@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { ownerRegisterSchema } from './Validations/registerFormValidations';
+import { ownerRegisterSchema } from './validations/registerFormValidations';
 import { useYupValidation } from 'hooks/useYupValidation';
 
 import { ReactComponent as ShoppingBag } from '../assets/Group 4.svg';
