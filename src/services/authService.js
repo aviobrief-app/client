@@ -13,9 +13,10 @@ const X_CSRF_TOKEN = 'x-csrf-token';
 export const registerOrganizationOwner = async (data) => {
     try {
         const result = await requester.post(api.registerOrganizationOwner(), data);
-        return result;
+        if(!result.owner || !result.organization) { throw result }
+        return Promise.resolve(result);
     } catch(err) {
-        return err;
+        return Promise.reject(err);
     }
 }
 
@@ -26,14 +27,13 @@ export const loginJWT = async (data) => {
 
         const result = await requester.post(api.loginAuth(), data);
         if(!result.accessToken) { throw result }
+
         sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
         const decodedJwt = jwt_decode(result.accessToken);
 
-        toaster.toastSuccess(toastMessages.LOGIN_OK);
-        return decodedJwt;
+        return Promise.resolve(decodedJwt);
     } catch(err) {
-        console.log(JSON.parse(err.errors[0].rejectedValue));
-        return err.message ? err.message : 'Login auth failed!';
+        return Promise.reject(err);
     }
 }
 

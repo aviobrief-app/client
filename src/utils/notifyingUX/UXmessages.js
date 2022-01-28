@@ -27,6 +27,7 @@ export const toastMessages = {
 
     //auth
     USER_REGISTER_FAIL: 'Registration failed!',
+    USER_REGISTER_OK: 'Registration successful!',
     USER_EMAIL_VERIFIED: 'Email verified!',
     WRONG_LOGIN_CREDENTIALS: 'Wrong email or password!',
     LOGIN_OK: 'Login successful!',

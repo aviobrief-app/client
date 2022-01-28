@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { ownerRegisterSchema } from './Validations/registerFormValidations';
 import { useYupValidation } from 'hooks/useYupValidation';
+import { ownerRegisterSchema } from './validations/registerFormValidations';
+import * as toaster from 'utils/notifyingUX/toaster';
+import { toastMessages } from 'utils/notifyingUX/UXmessages';
 
 import { ReactComponent as ShoppingBag } from '../assets/Group 4.svg';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
@@ -14,6 +16,8 @@ import * as authService from 'services/authService';
 import './RegisterOwnerForm.scss';
 const RegisterOwnerForm = () => {
 
+    const navigate = useNavigate();
+    const { validateForm } = useYupValidation();
     const [inputValues, setInputValues] = useState({});
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -31,22 +35,34 @@ const RegisterOwnerForm = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        authService
-            .registerOrganizationOwner(inputValues)
-            .then((result) => {
-                console.log(result);
-                setIsSubmitted(true);
-            })
-            .catch(err => {
-                // err.message
-                //     ? toaster.toastWarning(err.message)
-                //     : err.errors
-                //         ? toaster.toastWarning(err.errors[0].msg)
-                //         : toaster.toastWarning(toastMessages.USER_REGISTER_FAIL)
 
-                // loadingUX.dimScreenOut();
-                console.log(err);
+
+        validateForm(ownerRegisterSchema, inputValues)
+            .then(() => {
+                setErrors({});
+
+                authService
+                    .registerOrganizationOwner(inputValues)
+                    .then((result) => {
+                        setIsSubmitted(true);
+                        toaster.toastSuccess(toastMessages.USER_REGISTER_OK);
+                        navigate('/login');
+                    })
+                    .catch(err => {
+                        err.message
+                            ? toaster.toastWarning(err.message)
+                            : toaster.toastWarning(toastMessages.USER_REGISTER_FAIL)
+                        // loadingUX.dimScreenOut();
+                        // console.log(err);
+                    });
             })
+            .catch((errors) => {
+                setErrors(errors);
+                toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
+                // loadingUX.dimScreenOut();
+            });
+
+        setIsLoading(false);
     }
 
     return (

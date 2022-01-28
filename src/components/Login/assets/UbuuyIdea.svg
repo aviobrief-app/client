@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="173.3244342390863" height="53.49999999999996" viewBox="234.07913021403883 44.50000000000004 173.3244342390863 53.49999999999996" preserveAspectRatio="none">
+  <g>
+    <text x="268.9621582031251" y="72.91015625000004" font-family="Arial Black" font-weight="400" font-style="normal" font-size="28.0" fill="#9A2FAE" id="s-Paragraph_6-f5af6">
+      <tspan font-family="Arial Black" font-weight="400" font-style="normal" font-size="28.0" fill="#9A2FAE" dy="0.0" x="268.9621582031251">Ubuuy It!</tspan>
+    </text>
+  </g>
+  <g>
+    <defs>
+      <ellipse cx="239.07913021403883" cy="93.0" rx="5.0" ry="5.0" id="s-Ellipse-f5af6-path"></ellipse>
+    </defs>
+    <g>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse-f5af6-path" fill="#9A2FAE" fill-opacity="1.0" filter="none"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <ellipse cx="255.46215820312506" cy="81.50000000000003" rx="7.5" ry="7.5" id="s-Ellipse_1-f5af6-path"></ellipse>
+    </defs>
+    <g>
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse_1-f5af6-path" fill="#9A2FAE" fill-opacity="1.0" filter="none"></use>
+    </g>
+  </g>
+</svg>
