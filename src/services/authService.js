@@ -26,14 +26,13 @@ export const loginJWT = async (data) => {
 
         const result = await requester.post(api.loginAuth(), data);
         if(!result.accessToken) { throw result }
+
         sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
         const decodedJwt = jwt_decode(result.accessToken);
 
-        toaster.toastSuccess(toastMessages.LOGIN_OK);
-        return decodedJwt;
+        return Promise.resolve(decodedJwt);
     } catch(err) {
-        console.log(JSON.parse(err.errors[0].rejectedValue));
-        return err.message ? err.message : 'Login auth failed!';
+        return Promise.reject(err);
     }
 }
 

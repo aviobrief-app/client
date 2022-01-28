@@ -9,6 +9,9 @@
   padding-left: 25px;
 
   .left-graphics {
+    @media all and (max-width: 900px) {
+      display: none;
+    }
     width: 55%;
     position: relative;
 

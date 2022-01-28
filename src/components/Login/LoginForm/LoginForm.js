@@ -1,14 +1,20 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { useYupValidation } from 'hooks/useYupValidation';
 import { loginFormSchema } from './validations/loginFormSchema';
+import * as toaster from 'utils/notifyingUX/toaster';
+import { toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as authService from 'services/authService';
+
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import { ReactComponent as ToiletPaper } from '../assets/ToiletPaper.svg'
 
 
 import './LoginForm.scss';
 const LoginForm = () => {
-
+    const navigate = useNavigate();
+    const { validateForm } = useYupValidation();
     const [inputValues, setInputValues] = useState({});
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,6 +26,41 @@ const LoginForm = () => {
             [inputName]: value,
         }));
     };
+
+    const onFormSubmitHandler = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+
+
+        validateForm(loginFormSchema, inputValues)
+            .then((response) => {
+                setErrors({});
+
+                authService.loginJWT(inputValues)
+                    .then(() => {
+                        toaster.toastSuccess(toastMessages.LOGIN_OK);
+                        setIsSubmitted(true);
+                        navigate('/dev');
+                        // loadingUX.dimScreenOut();
+                    })
+                    .catch(err => {
+                        err.message
+                            ? toaster.toastWarning(err.message)
+                            : toaster.toastWarning(toastMessages.LOGIN_FAIL);
+                        // loadingUX.dimScreenOut();
+                        // console.log(err);
+                    })
+            })
+            .catch((errors) => {
+                setErrors(errors);
+                toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
+                // loadingUX.dimScreenOut();
+            });
+
+        setIsLoading(false);
+
+    }
+
     return (
         <section className="login-form">
             <div className="top-icon">
@@ -49,9 +90,9 @@ const LoginForm = () => {
                     />
                 </div>
                 <section className="links-container">
-                    <p className="login-submit">Login</p>
+                    <p className="login-submit" onClick={!isLoading ? onFormSubmitHandler : null}>Login</p>
                     <p className="or">or</p>
-                    <p className="signup">Signup</p>
+                    <Link to="" className="signup">Signup</Link>
                     <div className="slogan">
                         <p className="text">for a happier relationship</p>
                         <p className="star">*</p>
