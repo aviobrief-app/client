@@ -27,11 +27,11 @@ const Dev = () => {
             .catch(error => console.log(error));
     }
 
-    const onGetFPCclick = async () => {
-        authService.getFirstPartyCookie()
-            .then(response => console.log(response))
-            .catch(error => console.log(error));
-    }
+    // const onGetFPCclick = async () => {
+    //     authService.getFirstPartyCookie()
+    //         .then(response => console.log(response))
+    //         .catch(error => console.log(error));
+    // }
 
     const onLogoutClick = async () => {
         authService.logout()
@@ -45,8 +45,8 @@ const Dev = () => {
             <button onClick={onLoginClick}>LOGIN</button>
             <br></br>
             <button onClick={onGetUsersClick}>Get Users</button>
-            <br></br>
-            <button onClick={onGetFPCclick}>Get First Party Cookie</button>
+            {/* <br></br>
+            <button onClick={onGetFPCclick}>Get First Party Cookie</button> */}
             <br></br>
             <button onClick={onLogoutClick}>LOGOUT</button>
         </div>

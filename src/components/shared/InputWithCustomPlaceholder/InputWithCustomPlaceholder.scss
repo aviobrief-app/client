@@ -1,0 +1,85 @@
+@import "../../../styles/fluid.scss";
+
+.input-and-error-message-container {
+  width: 100%;
+  height: 100%;
+  .input-with-custom-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    input {
+      border-radius: 0;
+    }
+
+    .input-field {
+      width: 100%;
+      height: 100%;
+      border: 2px solid #9a2fae;
+      background-color: transparent;
+
+      padding-left: 20px;
+      @include fluid-font-size(768px, 1000px, 14px, 18px);
+    }
+
+    .input-field:hover,
+    .input-field:focus {
+      outline: 2.2px solid #9a2fae;
+      background-color: lightcyan;
+    }
+
+    .input-field-error {
+      background-color: rgb(245, 237, 214);
+    }
+
+    .input-field-error:hover,
+    .input-field-error:focus {
+      background-color: rgb(245, 237, 214);
+    }
+
+    .input-field-ok {
+      background-color: rgba(110, 252, 140, 0.432);
+    }
+
+    .input-decorations-container {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      pointer-events: none;
+      padding-left: 20px;
+
+      .input-placeholder {
+        pointer-events: none;
+      }
+    }
+
+    .icon-eye {
+      position: absolute;
+      color: #9a2fae;
+      cursor: pointer;
+      font-size: 16px;
+      right: 12px;
+    }
+
+    .input-ok-message-container {
+      position: absolute;
+      right: -25px;
+      text-align: end;
+
+      .fa-check-circle {
+        color: #9a2fae;
+        font-size: 20px;
+      }
+    }
+  }
+
+  .input-error-message-container {
+    color: rgb(255, 136, 0);
+    text-align: end;
+    margin-top: 3px;
+
+    @include fluid-font-size(768px, 1000px, 13px, 15px);
+  }
+}
