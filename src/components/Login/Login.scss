@@ -4,15 +4,65 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 50px;
-  padding-right: 100px;
+  padding: 35px;
+  padding-right: 120px;
+  padding-left: 25px;
+
+  .left-graphics {
+    width: 55%;
+    position: relative;
+
+    .pink-carpet {
+      position: absolute;
+      bottom: 0px;
+    }
+
+    .woman-on-couch {
+      width: 311px;
+      height: auto;
+      position: absolute;
+      z-index: 1;
+      left: 90px;
+      bottom: 30px;
+    }
+
+    .ubuuy-idea {
+      position: absolute;
+      left: 210px;
+    }
+
+    .credit {
+      position: absolute;
+      left: 140px;
+      bottom: 5px;
+      font-size: 12px;
+
+      .fa-creative-commons-by {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .disclaimer {
+    display: flex;
+    align-items: center;
+    font-family: "Malgun Ghotic", sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.4px;
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    .star {
+      color: #9a2fae;
+      margin-right: 3px;
+    }
+  }
 }
 
-.left-graphics {
-  width: 55%;
-  position: relative;
-
-  .credit {
-    position: absolute;
-  }
+.slant-left {
+  -moz-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(25deg, 0deg);
+  -webkit-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(25deg, 0deg);
+  -o-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(25deg, 0deg);
+  -ms-transform: scale(1) rotate(0deg) translate(0px, 0px) skew(25deg, 0deg);
+  transform: scale(1) rotate(0deg) translate(0px, 0px) skew(25deg, 0deg);
 }

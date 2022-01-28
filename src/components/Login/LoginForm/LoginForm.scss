@@ -8,7 +8,7 @@
   .top-icon {
     width: 198px;
     height: auto;
-    margin-bottom: 20px;
+    margin-top: -20px;
 
     .top-icon-image {
       width: 100%;
@@ -16,21 +16,23 @@
   }
 
   .form {
-    height: 210px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
 
     .input-container {
       width: 250px;
       height: 40px;
+      margin-bottom: 30px;
     }
 
     .links-container {
+      margin-top: -12px;
       height: 85px;
-      margin-top: 5px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -42,6 +44,18 @@
         font-weight: bold;
         font-size: 24px;
         color: #9a2fae;
+      }
+
+      .slogan {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        font-family: "Malgun Ghotic", sans-serif;
+        letter-spacing: 1.4px;
+        .star {
+          color: #9a2fae;
+          margin-left: 3px;
+        }
       }
     }
   }

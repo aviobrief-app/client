@@ -52,6 +52,10 @@ const LoginForm = () => {
                     <p className="login-submit">Login</p>
                     <p className="or">or</p>
                     <p className="signup">Signup</p>
+                    <div className="slogan">
+                        <p className="text">for a happier relationship</p>
+                        <p className="star">*</p>
+                    </div>
                 </section>
             </form>
         </section>
