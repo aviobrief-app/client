@@ -6,6 +6,7 @@ const springBaseUrls = {
 const springBaseUrl = springBaseUrls[process.env.NODE_ENV.trim()];
 
 /* auth related */
+export const registerOrganizationOwner = () => `${springBaseUrl}/api/auth/register-organization-owner`;
 export const loginAuth = () => `${springBaseUrl}/api/auth/login`;
 export const logout = () => `${springBaseUrl}/api/auth/logout`;
 

@@ -1,8 +1,48 @@
 .register-owner-form {
-  width: 260px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
 
-  .input-container {
-    width: 250px;
-    height: 40px;
+  .top-icon {
+    width: 45px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .input-container {
+      width: 250px;
+      height: 40px;
+    }
+
+    .register-button-container {
+      width: 140px;
+      height: 40px;
+      margin-top: 5px;
+    }
+  }
+
+  .bottom-disclaimer {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    letter-spacing: 1.3px;
+
+    font-family: "Malgun Gothic";
+
+    .login-link {
+      color: #9a2fae;
+      text-decoration: underline;
+      margin-left: 5px;
+    }
   }
 }

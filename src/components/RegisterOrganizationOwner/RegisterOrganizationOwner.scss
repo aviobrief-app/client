@@ -1,13 +1,21 @@
+@import "../../styles/fluid";
+
 .register-organization-owner {
-  padding: 50px;
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  padding: 50px;
+  padding-right: 100px;
 }
 
 .left-graphics {
   width: 55%;
   position: relative;
+
   .pink-background {
+    @include fluid-width(850px, 960px, 410px, 473px);
+
+    height: auto;
   }
 
   .basket {

@@ -1,7 +1,11 @@
 @import "../../../styles/fluid.scss";
 
 .input-and-error-message-container {
+  width: 100%;
+  height: 100%;
   .input-with-custom-placeholder {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     position: relative;
@@ -11,20 +15,13 @@
     }
 
     .input-field {
-      width: 550px;
-
-      /* fallback, if needed, then responsive property(ies) */
-      height: 40px;
-      font-size: 22px;
-      line-height: 27px;
-      padding-left: 20px;
-
+      width: 100%;
+      height: 100%;
       border: 2px solid #9a2fae;
       background-color: transparent;
 
-      @media all and (max-width: 1800px) {
-        margin-left: 10px;
-      }
+      padding-left: 20px;
+      @include fluid-font-size(768px, 1000px, 14px, 18px);
     }
 
     .input-field:hover,
@@ -51,41 +48,29 @@
       align-items: center;
       position: absolute;
       pointer-events: none;
+      padding-left: 20px;
 
       .input-placeholder {
         pointer-events: none;
-
-        /* fallback, if needed, then responsive property(ies) */
-        margin-left: 45px;
-        font-size: 22px;
       }
     }
 
     .icon-eye {
       position: absolute;
-
       color: #9a2fae;
       cursor: pointer;
-
-      /* fallback, if needed, then responsive property(ies) */
-      font-size: 24px;
-      right: 45px;
+      font-size: 16px;
+      right: 12px;
     }
 
     .input-ok-message-container {
       position: absolute;
-
-      /* fallback, if needed, then responsive property(ies) */
-      right: -40px;
-      bottom: 17px;
-
-      font-size: 18px;
+      right: -25px;
       text-align: end;
 
       .fa-check-circle {
         color: #9a2fae;
-        /* fallback, if needed, then responsive property(ies) */
-        font-size: 36px;
+        font-size: 20px;
       }
     }
   }
@@ -93,10 +78,8 @@
   .input-error-message-container {
     color: rgb(255, 136, 0);
     text-align: end;
-    margin-bottom: -29px;
+    margin-top: 3px;
 
-    /* fallback, if needed, then responsive property(ies) */
-    font-size: 18px;
-    margin-top: 10px;
+    @include fluid-font-size(768px, 1000px, 13px, 15px);
   }
 }

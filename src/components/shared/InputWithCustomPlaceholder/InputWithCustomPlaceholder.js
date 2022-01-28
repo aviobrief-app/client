@@ -5,8 +5,6 @@ import { useYupValidation } from 'hooks/useYupValidation';
 import './InputWithCustomPlaceholder.scss';
 
 const InputWithCustomPlaceholder = ({
-    width,
-    height,
     name,
     placeholder,
     publishInputValue,
@@ -22,8 +20,6 @@ const InputWithCustomPlaceholder = ({
     testId,
 
 }) => {
-    const style = { ...(width ? { width } : {}), ...(height ? { height } : {}), };
-
     const { validateInputField } = useYupValidation();
     const [value, setValue] = useState('');
     const [ownValidationError, setOwnValidationError] = useState('');
@@ -82,7 +78,7 @@ const InputWithCustomPlaceholder = ({
 
     return (
         <div className="input-and-error-message-container">
-            <div className={`input-with-custom-placeholder`} style={style}>
+            <div className={`input-with-custom-placeholder`}>
                 <input
                     className={`input-field  ${ownValidationError ? 'input-field-error' : ''}`}
                     name={name}

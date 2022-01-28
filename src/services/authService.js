@@ -10,6 +10,15 @@ import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
 const ACCESS_TOKEN = 'ACCESS-TOKEN';
 const X_CSRF_TOKEN = 'x-csrf-token';
 
+export const registerOrganizationOwner = async (data) => {
+    try {
+        const result = await requester.post(api.registerOrganizationOwner(), data);
+        return result;
+    } catch(err) {
+        return err;
+    }
+}
+
 export const loginJWT = async (data) => {
     try {
         const deviceLocation = await fetchDeviceLocationIp();

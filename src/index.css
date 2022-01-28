@@ -1,8 +1,9 @@
+@import url("https://use.fontawesome.com/releases/v5.15.4/css/all.css");
 @import url("./styles/reset.css");
 
 html {
   font-family: Arial, sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   /* overflow-y: scroll; */
 }
 
