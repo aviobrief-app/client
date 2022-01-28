@@ -13,9 +13,10 @@ const X_CSRF_TOKEN = 'x-csrf-token';
 export const registerOrganizationOwner = async (data) => {
     try {
         const result = await requester.post(api.registerOrganizationOwner(), data);
-        return result;
+        if(!result.owner || !result.organization) { throw result }
+        return Promise.resolve(result);
     } catch(err) {
-        return err;
+        return Promise.reject(err);
     }
 }
 

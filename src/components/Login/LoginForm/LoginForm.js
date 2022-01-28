@@ -36,7 +36,8 @@ const LoginForm = () => {
             .then((response) => {
                 setErrors({});
 
-                authService.loginJWT(inputValues)
+                authService
+                    .loginJWT(inputValues)
                     .then(() => {
                         toaster.toastSuccess(toastMessages.LOGIN_OK);
                         setIsSubmitted(true);
@@ -92,7 +93,7 @@ const LoginForm = () => {
                 <section className="links-container">
                     <p className="login-submit" onClick={!isLoading ? onFormSubmitHandler : null}>Login</p>
                     <p className="or">or</p>
-                    <Link to="" className="signup">Signup</Link>
+                    <Link to="/register-organization-owner" className="signup">Signup</Link>
                     <div className="slogan">
                         <p className="text">for a happier relationship</p>
                         <p className="star">*</p>

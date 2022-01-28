@@ -14,7 +14,7 @@ const Login = () => {
                 <PinkCarpet className="pink-carpet" />
                 <UbuuyIdea className="ubuuy-idea" />
                 <a className="credit" href="https://www.freepik.com/vectors/food">
-                    <i class="fab fa-creative-commons-by"></i>
+                    <i className="fab fa-creative-commons-by"></i>
                     Food vector created by stories - www.freepik.com
                 </a>
             </aside>
