@@ -1,0 +1,48 @@
+.login-form {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+
+  .top-icon {
+    width: 198px;
+    height: auto;
+    margin-bottom: 20px;
+
+    .top-icon-image {
+      width: 100%;
+    }
+  }
+
+  .form {
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .input-container {
+      width: 250px;
+      height: 40px;
+    }
+
+    .links-container {
+      height: 85px;
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .login-submit,
+      .signup {
+        font-family: "Malgun Ghotic", sans-serif;
+        font-weight: bold;
+        font-size: 24px;
+        color: #9a2fae;
+      }
+    }
+  }
+}

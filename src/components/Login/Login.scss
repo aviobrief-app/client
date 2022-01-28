@@ -1,0 +1,18 @@
+@import "../../styles/fluid";
+
+.login {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 50px;
+  padding-right: 100px;
+}
+
+.left-graphics {
+  width: 55%;
+  position: relative;
+
+  .credit {
+    position: absolute;
+  }
+}
