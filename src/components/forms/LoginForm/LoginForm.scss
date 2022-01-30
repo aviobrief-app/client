@@ -2,6 +2,7 @@
 
 .login-form {
   width: 250px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,7 +13,9 @@
     margin-top: -20px;
     height: auto;
 
-    @include fluid-width(700px, 1440px, 90px, 198px);
+    @media all and (max-height: 500px) {
+      display: none;
+    }
 
     .top-icon-image {
       width: 100%;
@@ -33,9 +36,7 @@
     .input-container {
       width: 250px;
       height: 40px;
-
       margin-bottom: 30px;
-      @include fluid-margin-bottom(700px, 1440px, 25px, 30px);
     }
 
     .links-container {
@@ -48,13 +49,11 @@
 
       .login-submit,
       .signup {
+        font-size: 24px;
         font-family: "Malgun Ghotic", sans-serif;
         font-weight: bold;
         color: #9a2fae;
         cursor: pointer;
-
-        font-size: 24px;
-        @include fluid-font-size(700px, 1440px, 20px, 24px);
       }
 
       .slogan {
@@ -63,8 +62,6 @@
         align-items: center;
         font-family: "Malgun Ghotic", sans-serif;
         letter-spacing: 1.4px;
-
-        @include fluid-font-size(700px, 1440px, 14px, 18px);
 
         .star {
           color: #9a2fae;
