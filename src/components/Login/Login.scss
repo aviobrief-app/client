@@ -1,4 +1,4 @@
-@import "../../styles/fluid";
+@import "../../styles/fluid.scss";
 
 .login {
   display: flex;
@@ -8,37 +8,56 @@
   padding-right: 120px;
   padding-left: 25px;
 
+  @include fluid-padding-right(700px, 1440px, 50px, 120px);
+  @include fluid-padding-top(700px, 1440px, 10px, 35px);
+
   .left-graphics {
-    @media all and (max-width: 900px) {
+    @media all and (max-width: 600px) {
       display: none;
     }
+
     width: 55%;
     position: relative;
 
     .pink-carpet {
       position: absolute;
       bottom: 0px;
+      height: auto;
+
+      @include fluid-width(700px, 1440px, 300px, 456px);
+      @include fluid-bottom(700px, 1440px, 50px, 0px);
     }
 
     .woman-on-couch {
-      width: 311px;
       height: auto;
       position: absolute;
       z-index: 1;
-      left: 90px;
+      height: auto;
+
       bottom: 30px;
+      @include fluid-left(700px, 1440px, 65px, 90px);
+      @include fluid-width(700px, 1440px, 170px, 311px);
+      @include fluid-bottom(700px, 1440px, 65px, 30px);
     }
 
     .ubuuy-idea {
       position: absolute;
       left: 210px;
+
+      height: auto;
+      @include fluid-width(700px, 1440px, 130px, 173px);
+      @include fluid-left(700px, 1440px, 100px, 210px);
     }
 
     .credit {
       position: absolute;
+
       left: 140px;
-      bottom: 5px;
       font-size: 12px;
+      bottom: 5px;
+      @include fluid-bottom(700px, 1440px, 52px, 5px);
+      @include fluid-font-size(700px, 1440px, 9px, 12px);
+      @include fluid-left(700px, 1440px, 75px, 140px);
 
       .fa-creative-commons-by {
         margin-right: 5px;
@@ -50,11 +69,16 @@
     display: flex;
     align-items: center;
     font-family: "Malgun Ghotic", sans-serif;
-    font-size: 12px;
     letter-spacing: 1.4px;
     position: absolute;
+
+    font-size: 12px;
     right: 40px;
     bottom: 20px;
+    @include fluid-font-size(700px, 1440px, 10px, 12px);
+    @include fluid-right(700px, 1440px, 20px, 40px);
+    @include fluid-bottom(700px, 1440px, 14px, 20px);
+
     .star {
       color: #9a2fae;
       margin-right: 3px;
