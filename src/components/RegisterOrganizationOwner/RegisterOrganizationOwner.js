@@ -1,6 +1,6 @@
-import { ReactComponent as PinkBackground } from './assets/Group 1.svg';
-import { ReactComponent as BasketWithItems } from './assets/Group 2.svg';
-import { ReactComponent as Human } from './assets/Group 3.svg';
+import { ReactComponent as PinkBackground } from './assets/PinkBackground.svg';
+import { ReactComponent as BasketWithItems } from './assets/BasketWithItems.svg';
+import { ReactComponent as ManRunning } from './assets/ManRunning.svg';
 
 import RegisterOwnerForm from './RegisterOwnerForm/RegisterOwnerForm';
 
@@ -14,7 +14,7 @@ const RegisterOrganizationOwner = () => {
             <aside className="left-graphics">
                 <PinkBackground className="pink-background" />
                 <BasketWithItems className="basket" />
-                <Human className="human" />
+                <ManRunning className="human" />
             </aside>
             <RegisterOwnerForm />
         </section>
