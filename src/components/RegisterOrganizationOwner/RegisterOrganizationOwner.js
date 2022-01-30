@@ -1,8 +1,8 @@
-import { ReactComponent as PinkBackground } from './assets/PinkBackground.svg';
-import { ReactComponent as BasketWithItems } from './assets/BasketWithItems.svg';
-import { ReactComponent as ManRunning } from './assets/ManRunning.svg';
+import { ReactComponent as PinkBackground } from 'assets/svg/PinkBackground.svg';
+import { ReactComponent as BasketWithItems } from 'assets/svg/BasketWithItems.svg';
+import { ReactComponent as ManRunning } from 'assets/svg/ManRunning.svg';
 
-import RegisterOwnerForm from './RegisterOwnerForm/RegisterOwnerForm';
+import RegisterOwnerForm from '../forms/RegisterOwnerForm/RegisterOwnerForm';
 
 
 import './RegisterOrganizationOwner.scss';

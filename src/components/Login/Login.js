@@ -1,8 +1,8 @@
 
-import { ReactComponent as PinkCarpet } from './assets/PinkCarpet.svg'
-import { ReactComponent as WomanOnCouch } from './assets/WomanOnCouch.svg'
-import { ReactComponent as UbuuyIdea } from './assets/UbuuyIdea.svg'
-import LoginForm from 'components/Login/LoginForm/LoginForm';
+import { ReactComponent as PinkCarpet } from 'assets/svg/PinkCarpet.svg'
+import { ReactComponent as WomanOnCouch } from 'assets/svg/WomanOnCouch.svg'
+import { ReactComponent as UbuuyIdea } from 'assets/svg/UbuuyIdea.svg'
+import LoginForm from 'components/forms/LoginForm/LoginForm';
 
 
 import './Login.scss';
