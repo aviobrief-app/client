@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="20.702430725097656" height="20.689645767211914" viewBox="143.0 92.99999997494507 20.702430725097656 20.689645767211914" preserveAspectRatio="none">
+  <g>
+    <defs>
+      <path id="s-Line_16-7805d" d="M145.0 103.00000000109627 L161.70243036752618 103.0 "></path>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Line_16-7805d" fill="#FFFFFF" fill-opacity="1.0" stroke-width="3.0" stroke="#FFFFFF" stroke-linecap="square"></use>
+    </g>
+  </g>
+  <g>
+    <defs>
+      <path id="s-Line_17-7805d" d="M153.5 111.68964568487932 L153.50000000000006 95.0 "></path>
+    </defs>
+    <g style="mix-blend-mode:normal">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Line_17-7805d" fill="#FFFFFF" fill-opacity="1.0" stroke-width="3.0" stroke="#FFFFFF" stroke-linecap="square"></use>
+    </g>
+  </g>
+</svg>
