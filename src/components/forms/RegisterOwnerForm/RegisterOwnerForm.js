@@ -6,7 +6,7 @@ import { ownerRegisterSchema } from './validations/registerFormValidations';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
 
-import { ReactComponent as ShoppingBag } from '../assets/Group 4.svg';
+import { ReactComponent as ShoppingBag } from 'assets/svg/ShoppingBag.svg';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
 

@@ -1,47 +1,55 @@
-@import "../../styles/fluid";
+@import "../../styles/fluid.scss";
 
 .login {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   width: 100%;
+  height: 100vh;
   padding: 35px;
   padding-right: 120px;
   padding-left: 25px;
 
+  @media all and (max-width: 650px) {
+    margin: 0 auto;
+    padding: 0px !important;
+    margin-top: 30px;
+    height: auto;
+    width: fit-content;
+  }
+
+  @include fluid-padding-right(700px, 1440px, 50px, 120px);
+
   .left-graphics {
-    @media all and (max-width: 900px) {
+    @media all and (max-width: 650px) {
       display: none;
     }
+
     width: 55%;
-    position: relative;
+    height: fit-content;
 
-    .pink-carpet {
-      position: absolute;
-      bottom: 0px;
-    }
+    .woman-on-couch-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .woman-on-couch {
+        height: auto;
 
-    .woman-on-couch {
-      width: 311px;
-      height: auto;
-      position: absolute;
-      z-index: 1;
-      left: 90px;
-      bottom: 30px;
-    }
+        @include fluid-left(700px, 1440px, 15px, 90px);
+        @include fluid-width(700px, 1440px, 290px, 490px);
+      }
 
-    .ubuuy-idea {
-      position: absolute;
-      left: 210px;
-    }
+      .credit {
+        margin-top: -12px;
+        margin-left: 45px;
 
-    .credit {
-      position: absolute;
-      left: 140px;
-      bottom: 5px;
-      font-size: 12px;
+        font-size: 14px;
+        @include fluid-font-size(700px, 1440px, 9px, 14px);
+        @include fluid-margin-top(700px, 1440px, -12px, -20px);
 
-      .fa-creative-commons-by {
-        margin-right: 5px;
+        .fa-creative-commons-by {
+          margin-right: 5px;
+        }
       }
     }
   }
@@ -50,11 +58,16 @@
     display: flex;
     align-items: center;
     font-family: "Malgun Ghotic", sans-serif;
-    font-size: 12px;
     letter-spacing: 1.4px;
     position: absolute;
+
+    font-size: 12px;
     right: 40px;
     bottom: 20px;
+    @include fluid-font-size(700px, 1440px, 10px, 12px);
+    @include fluid-right(700px, 1440px, 20px, 40px);
+    @include fluid-bottom(700px, 1440px, 14px, 20px);
+
     .star {
       color: #9a2fae;
       margin-right: 3px;

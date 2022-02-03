@@ -8,7 +8,7 @@ import { toastMessages } from 'utils/notifyingUX/UXmessages';
 import * as authService from 'services/authService';
 
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
-import { ReactComponent as ToiletPaper } from '../assets/ToiletPaper.svg'
+import { ReactComponent as ToiletPaper } from 'assets/svg/ToiletPaper.svg'
 
 
 import './LoginForm.scss';
