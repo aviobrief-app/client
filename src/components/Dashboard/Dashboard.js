@@ -4,9 +4,9 @@
 import './Dashboard.scss';
 const Dashboard = () => {
     return (
-        <div>
+        <section className="dashboard">
             dashboard
-        </div>
+        </section>
 
     )
 }

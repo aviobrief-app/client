@@ -4,6 +4,8 @@ import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/Regi
 import Login from 'components/Login/Login';
 import Dashboard from 'components/Dashboard/Dashboard';
 
+import withNavbar from 'components/hoc/withNavbar';
+
 import './App.css';
 function App() {
 
@@ -13,8 +15,7 @@ function App() {
         <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
-
+        <Route path="/dashboard" element={withNavbar(Dashboard)} />
 
 
         <Route path="/.well-known/first-party-set" element={JSON.stringify("test")} />
