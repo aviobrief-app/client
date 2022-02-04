@@ -1,7 +1,8 @@
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import AddProductButton from 'components/AddProductButton/AddProductButton';
-import ModalBackdrop from 'components/modals/ModalBackdrop/ModalBackdrop';
+import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
+import AddProductForm from 'components/forms/AddProductForm/AddProductForm';
 
 
 import './Dashboard.scss';
@@ -20,7 +21,11 @@ const Dashboard = () => {
                 <AddProductButton />
             </section>
 
-            {contextDisplayModal && <ModalBackdrop />}
+            {contextDisplayModal &&
+                <ModalBackdrop >
+                    <AddProductForm />
+                </ModalBackdrop>
+            }
         </section>
     )
 }
