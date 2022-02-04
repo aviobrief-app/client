@@ -1,8 +1,13 @@
 import React, { useEffect } from 'react';
+import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+
 
 import './ModalBackdrop.scss';
 
 const ModalBackdrop = ({ children }) => {
+
+    const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
+
     useEffect(() => {
         let marginRightPx = 0;
         if(window.getComputedStyle) {
@@ -18,6 +23,7 @@ const ModalBackdrop = ({ children }) => {
             overflowY: 'hidden',
             paddingRight: `${marginRightPx + scrollbarWidthPx - 1}px`
         });
+
         return () => {
             Object.assign(document.body.style, {
                 overflowY: 'scroll',
@@ -26,8 +32,12 @@ const ModalBackdrop = ({ children }) => {
         };
     }, []);
 
+    const onModalBackdropClick = () => {
+        // contextSetDisplayModal(false);
+    }
+
     return (
-        <div className="modal-backdrop">
+        <div className="modal-backdrop" onClick={onModalBackdropClick}>
             <div className="modal-box">
                 {children}
             </div>

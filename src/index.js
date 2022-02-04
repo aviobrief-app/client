@@ -8,13 +8,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from 'contexts/AuthContext';
+import { ModalBackdropContextProvider } from 'contexts/ModalBackdropContext';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthContextProvider>
-        <App />
+        <ModalBackdropContextProvider>
+          <App />
+        </ModalBackdropContextProvider>
       </AuthContextProvider>
     </Router>
     <ToastContainer

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import AddProductButton from 'components/AddProductButton/AddProductButton';
 import ModalBackdrop from 'components/modals/ModalBackdrop/ModalBackdrop';
@@ -7,11 +7,11 @@ import ModalBackdrop from 'components/modals/ModalBackdrop/ModalBackdrop';
 import './Dashboard.scss';
 const Dashboard = () => {
 
-    const [displayModal, setDisplayModal] = useState(false);
+    const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
-        setDisplayModal(true);
+        contextSetDisplayModal(true);
     }
 
     return (
@@ -20,7 +20,7 @@ const Dashboard = () => {
                 <AddProductButton />
             </section>
 
-            {displayModal && <ModalBackdrop />}
+            {contextDisplayModal && <ModalBackdrop />}
         </section>
     )
 }
