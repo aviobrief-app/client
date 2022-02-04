@@ -6,7 +6,6 @@ import './AddProductButton.scss';
 const AddProductButton = () => {
 
 
-
     return (
         <button type="button" className="add-product-button" >
             <ThinPlusSign />

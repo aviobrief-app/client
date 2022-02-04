@@ -8,6 +8,7 @@ const ButtonFilled = ({
     text,
     fontSize,
     fontWeight,
+    letterSpacing,
     disabled,
     border,
     width,
@@ -19,6 +20,7 @@ const ButtonFilled = ({
         backgroundColor: `${fillColor || '#9a2fae'}`,
         fontSize: `${fontSize || '18px'}`,
         fontWeight: `${fontWeight || '700'}`,
+        letterSpacing: `${letterSpacing || '1px'}`,
         border: `${border || 'none'}`,
         ...(width ? { width } : {}),
         ...(height ? { height } : {}),
@@ -33,7 +35,7 @@ const ButtonFilled = ({
             onClick={onClick}
         >
             <Link
-                className="button-transparent-link"
+                className="button-filled-link"
                 to={url || '/no-url-passed'}
                 onClick={(e) => e.preventDefault()}
             >
