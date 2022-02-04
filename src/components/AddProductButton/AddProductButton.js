@@ -4,11 +4,17 @@ import { ReactComponent as ThinPlusSign } from 'assets/svg/ThinPlusSign.svg';
 
 import './AddProductButton.scss';
 const AddProductButton = () => {
+
+
+    const onAddProductButtonClick = (e) => {
+        e.preventDefault();
+    }
+
     return (
-        <section className="add-product-button">
+        <button type="button" className="add-product-button" onClick={onAddProductButtonClick}>
             <ThinPlusSign />
             <p className="button-text">Add</p>
-        </section>
+        </button >
     )
 }
 
