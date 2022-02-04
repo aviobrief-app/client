@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="30.0" height="27.0" viewBox="17.5 20.500000000000014 30.0 27.0" preserveAspectRatio="none">
+    <g>
+        <defs>
+            <path id="s-Line_1-7805d" d="M20.0 23.000000001182343 L45.0 23.0 "></path>
+        </defs>
+        <g style="mix-blend-mode:normal">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Line_1-7805d" fill="#FFFFFF" fill-opacity="1.0" stroke-width="4.0" stroke="#FFFFFF" stroke-linecap="square"></use>
+        </g>
+    </g>
+    <g>
+        <defs>
+            <path id="s-Line_2-7805d" d="M20.0 34.00000000118234 L45.0 34.0 "></path>
+        </defs>
+        <g style="mix-blend-mode:normal">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Line_2-7805d" fill="#FFFFFF" fill-opacity="1.0" stroke-width="4.0" stroke="#FFFFFF" stroke-linecap="square"></use>
+        </g>
+    </g>
+    <g>
+        <defs>
+            <path id="s-Line_3-7805d" d="M20.0 45.00000000118234 L45.0 45.0 "></path>
+        </defs>
+        <g style="mix-blend-mode:normal">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Line_3-7805d" fill="#FFFFFF" fill-opacity="1.0" stroke-width="4.0" stroke="#FFFFFF" stroke-linecap="square"></use>
+        </g>
+    </g>
+</svg>
