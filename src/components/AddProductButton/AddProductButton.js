@@ -6,12 +6,9 @@ import './AddProductButton.scss';
 const AddProductButton = () => {
 
 
-    const onAddProductButtonClick = (e) => {
-        e.preventDefault();
-    }
 
     return (
-        <button type="button" className="add-product-button" onClick={onAddProductButtonClick}>
+        <button type="button" className="add-product-button" >
             <ThinPlusSign />
             <p className="button-text">Add</p>
         </button >
