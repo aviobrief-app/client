@@ -15,7 +15,7 @@ import './AddProductForm.scss';
 const AddProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
-    const [inputValues, setInputValues] = useState({});
+    const [inputValues, setInputValues] = useState({ priority: 'Need Now' });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -30,7 +30,6 @@ const AddProductForm = () => {
         }));
     };
 
-    console.log(inputValues);
     return (
         <form className="add-product-form" >
             <div className="form-header">
@@ -44,7 +43,7 @@ const AddProductForm = () => {
                         <div className="input-container">
                             <InputWithCustomPlaceholder
                                 name="productName"
-                                placeholder={'ex: vinegard'}
+                                placeholder={'ex: vinegar'}
                                 publishInputValue={publishInputValue}
                                 globalValidationError={errors.productName}
                                 hasHideIcon={true}

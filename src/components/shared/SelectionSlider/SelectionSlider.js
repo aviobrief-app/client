@@ -16,7 +16,9 @@ const SelectionSlider = ({
                     <SingleChoice
                         label={label}
                         publishInputValue={publishInputValue}
-                        isSelected={publishInputValue.priority}
+                        inputValues={inputValues}
+                        width={'120px'}
+                        height={'40px'}
                     />)}
         </section>
     )
