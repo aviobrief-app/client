@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useYupValidation } from 'hooks/useYupValidation';
 
 import './InputWithCustomPlaceholder.scss';
@@ -29,7 +28,6 @@ const InputWithCustomPlaceholder = ({
     const [seeValue, setSeeValue] = useState(false);
     const [showPlaceholder, setShowPlaceholder] = useState(true);
     const [showInputMessage, setShowInputMessage] = useState(false);
-    const location = useLocation();
 
     useEffect(() => isSubmitted && setValue(''), [isSubmitted]);
     useEffect(() => { value !== '' ? setShowPlaceholder(false) : setShowPlaceholder(true); }, [value]);
