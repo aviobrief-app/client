@@ -2,11 +2,16 @@
 
 import './SingleChoice.scss';
 const SingleChoice = ({
-    isSelected
+    label,
+    isSelected,
+    publishInputValue,
 }) => {
     return (
-        <div className={`single-choice ${isSelected ? 'choice-selected' : ''}`}>
-
+        <div
+            className={`single-choice ${isSelected ? 'choice-selected' : ''}`}
+            onClick={() => publishInputValue('priority', label)}
+        >
+            {label}
         </div>
     )
 }

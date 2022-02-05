@@ -9,6 +9,7 @@ import { ReactComponent as TakePhoto } from 'assets/svg/TakePhoto.svg';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
 import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
+import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
 
 import './AddProductForm.scss';
 const AddProductForm = () => {
@@ -28,6 +29,8 @@ const AddProductForm = () => {
             [inputName]: value,
         }));
     };
+
+    console.log(inputValues);
     return (
         <form className="add-product-form" >
             <div className="form-header">
@@ -53,6 +56,11 @@ const AddProductForm = () => {
                     </div>
                     <div className="priority-input">
                         <Label text={'Priority:'} />
+                        <SelectionSlider
+                            choices={['Need Now', 'Can Wait']}
+                            publishInputValue={publishInputValue}
+                            inputValues={inputValues}
+                        />
                     </div>
                     <div className="exact-input">
                         <Label text={'Exact brand'} />

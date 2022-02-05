@@ -4,24 +4,19 @@ import SingleChoice from './SingleChoice/SingleChoice';
 
 import './SelectionSlider.scss';
 const SelectionSlider = ({
-    choicesLabels
+    choices,
+    publishInputValue,
+    inputValues
 }) => {
-    const [selectedValue, setSelectedValue] = useState({});
 
-
-    const publishSelectedValue = (value) => {
-        setSelectedValue(() => ({
-            [value]: value,
-        }));
-    };
     return (
         <section className="selection-slider">
-            {choicesLabels
+            {choices
                 .map(label =>
                     <SingleChoice
-                        text={label}
-                        publishSelectedValue={publishSelectedValue}
-                        isSelected={selectedValue.text}
+                        label={label}
+                        publishInputValue={publishInputValue}
+                        isSelected={publishInputValue.priority}
                     />)}
         </section>
     )
