@@ -5,11 +5,11 @@ import { addProductFormSchema } from './validations/addProductFormSchema';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import { ReactComponent as CloseButtonPink } from 'assets/svg/CloseButtonPink.svg';
-import { ReactComponent as TakePhoto } from 'assets/svg/TakePhoto.svg';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
 import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
+import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
 
 import * as productService from 'services/productService';
 
@@ -17,7 +17,7 @@ import './AddProductForm.scss';
 const AddProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
-    const [inputValues, setInputValues] = useState({ priority: 'Now', productName: '', image: {} });
+    const [inputValues, setInputValues] = useState({ priority: 'Now' });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -32,33 +32,6 @@ const AddProductForm = () => {
         }));
     };
 
-    const attachDisplayImageFunctionality = () => {
-
-        const takePhotoSVG = document.getElementById("take-photo-svg");
-        const chooseFile = document.getElementById("product-image-input");
-        const imgPreview = document.getElementById("product-image-preview");
-
-        chooseFile.addEventListener("change", function () {
-            getImgData();
-        });
-
-
-        function getImgData() {
-            const files = chooseFile.files[0];
-            if(files) {
-                let dataResult;
-                const fileReader = new FileReader();
-                fileReader.readAsDataURL(files);
-                fileReader.addEventListener("load", function () {
-                    dataResult = this.result;
-                    takePhotoSVG.style.display = "none";
-                    imgPreview.style.display = "block";
-                    imgPreview.innerHTML = '<img src="' + this.result + '" />';
-                    setInputValues(inputValues => ({ ...inputValues, image: dataResult }));
-                });
-            }
-        }
-    }
 
     const onAddProductClick = (e) => {
         e.preventDefault();
@@ -84,13 +57,9 @@ const AddProductForm = () => {
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
             <section className="form-content">
-                <div className="get-product-image">
-                    <input type="file" accept="image/*" id="product-image-input" />
-                    <label htmlFor="product-image-input" onClick={attachDisplayImageFunctionality}>
-                        <TakePhoto id="take-photo-svg" />
-                    </label>
-                    <div id="product-image-preview" display='none'></div>
-                </div>
+                <ProductImageUpload
+                    publishInputValue={publishInputValue}
+                />
                 <div className="form-content-middle">
                     <div className="name-input">
                         <Label text={'Name:'} />
