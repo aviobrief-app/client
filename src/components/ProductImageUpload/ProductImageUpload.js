@@ -1,6 +1,5 @@
 
 
-
 import { ReactComponent as TakePhoto } from 'assets/svg/TakePhoto.svg';
 import { displaySelectedImageHandler } from './helper/displaySelectedImage';
 
