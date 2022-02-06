@@ -30,13 +30,46 @@ const AddProductForm = () => {
         }));
     };
 
+    const attachDisplayImageFunctionality = () => {
+
+        const takePhotoSVG = document.getElementById("take-photo-svg");
+        const chooseFile = document.getElementById("product-image-input");
+        const imgPreview = document.getElementById("product-image-preview");
+
+        chooseFile.addEventListener("change", function () {
+            getImgData();
+        });
+
+
+        function getImgData() {
+            const files = chooseFile.files[0];
+            if(files) {
+                console.log(files);
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(files);
+                fileReader.addEventListener("load", function () {
+                    takePhotoSVG.style.display = "none";
+                    imgPreview.style.display = "block";
+                    imgPreview.innerHTML = '<img src="' + this.result + '" />';
+                });
+            }
+        }
+    }
+
+
     return (
         <form className="add-product-form" >
             <div className="form-header">
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
             <section className="form-content">
-                <TakePhoto />
+                <div className="get-product-image">
+                    <input type="file" accept="image/*" id="product-image-input" />
+                    <label htmlFor="product-image-input" onClick={attachDisplayImageFunctionality}>
+                        <TakePhoto id="take-photo-svg" />
+                    </label>
+                    <div id="product-image-preview" display='none'></div>
+                </div>
                 <div className="form-content-middle">
                     <div className="name-input">
                         <Label text={'Name:'} />

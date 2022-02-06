@@ -27,6 +27,26 @@
     align-items: center;
     height: fit-content;
 
+    .get-product-image {
+      #product-image-input {
+        display: none;
+      }
+
+      #product-image-preview {
+        width: 125px;
+        height: 125px;
+        display: none;
+        margin-bottom: 5px;
+      }
+
+      #product-image-preview > img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+        border: 3px solid #9a2fae;
+      }
+    }
+
     .form-content-middle {
       width: 250px;
       display: flex;
