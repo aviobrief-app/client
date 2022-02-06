@@ -11,11 +11,13 @@ import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
 
+import * as productService from 'services/productService';
+
 import './AddProductForm.scss';
 const AddProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
-    const [inputValues, setInputValues] = useState({ priority: 'Now' });
+    const [inputValues, setInputValues] = useState({ priority: 'Now', productName: '', image: {} });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -44,14 +46,16 @@ const AddProductForm = () => {
         function getImgData() {
             const files = chooseFile.files[0];
             if(files) {
+                let dataResult;
                 const fileReader = new FileReader();
                 fileReader.readAsDataURL(files);
                 fileReader.addEventListener("load", function () {
+                    dataResult = this.result;
                     takePhotoSVG.style.display = "none";
                     imgPreview.style.display = "block";
                     imgPreview.innerHTML = '<img src="' + this.result + '" />';
+                    setInputValues(inputValues => ({ ...inputValues, image: dataResult }));
                 });
-                setInputValues(inputValues => ({ ...inputValues, image: files }));
             }
         }
     }
@@ -59,6 +63,18 @@ const AddProductForm = () => {
     const onAddProductClick = (e) => {
         e.preventDefault();
         console.log(inputValues);
+        const formData = new FormData();
+        formData.append('priority', inputValues.priority)
+        formData.append('productName', inputValues.productName)
+        formData.append('image', inputValues.image)
+
+
+        productService.addProduct(inputValues)
+            .then(res => {
+                console.log(res);
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
 
