@@ -14,6 +14,9 @@ export const logout = () => `${springBaseUrl}/api/auth/logout`;
 /* user related */
 export const getAllUsers = () => `${springBaseUrl}/users`;
 
+/* products related*/
+export const addProduct = () => `${springBaseUrl}/products`;
+
 
 
 /*

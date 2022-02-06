@@ -15,7 +15,7 @@ import './AddProductForm.scss';
 const AddProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
-    const [inputValues, setInputValues] = useState({ priority: 'Need Now' });
+    const [inputValues, setInputValues] = useState({ priority: 'Now' });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -44,7 +44,6 @@ const AddProductForm = () => {
         function getImgData() {
             const files = chooseFile.files[0];
             if(files) {
-                console.log(files);
                 const fileReader = new FileReader();
                 fileReader.readAsDataURL(files);
                 fileReader.addEventListener("load", function () {
@@ -52,8 +51,14 @@ const AddProductForm = () => {
                     imgPreview.style.display = "block";
                     imgPreview.innerHTML = '<img src="' + this.result + '" />';
                 });
+                setInputValues(inputValues => ({ ...inputValues, image: files }));
             }
         }
+    }
+
+    const onAddProductClick = (e) => {
+        e.preventDefault();
+        console.log(inputValues);
     }
 
 
@@ -79,28 +84,23 @@ const AddProductForm = () => {
                                 placeholder={'ex: vinegar'}
                                 publishInputValue={publishInputValue}
                                 globalValidationError={errors.productName}
-                                hasHideIcon={true}
+                                hasHideIcon={false}
                                 isSubmitted={isSubmitted}
                                 validations={addProductFormSchema}
-                                type={'text'}
                             />
                         </div>
                     </div>
                     <div className="priority-input">
                         <Label text={'Priority:'} />
                         <SelectionSlider
-                            choices={['Need Now', 'Can Wait']}
+                            choices={['Now', 'Later', 'Archive']}
                             publishInputValue={publishInputValue}
                             inputValues={inputValues}
                         />
                     </div>
                     <div className="exact-input">
-                        <Label text={'Exact brand'} />
+                        <Label text={'Exact brand'} fontSize='18px' />
                     </div>
-                    <div className="add-to-cart-input">
-                        <Label text={'Add to cart'} />
-                    </div>
-
                 </div>
             </section>
             <div className="form-footer">
@@ -112,6 +112,7 @@ const AddProductForm = () => {
                     fontSize="20px"
                     fontWeight="400"
                     letterSpacing="2.5px"
+                    onClick={onAddProductClick}
                 />
             </div>
         </form>

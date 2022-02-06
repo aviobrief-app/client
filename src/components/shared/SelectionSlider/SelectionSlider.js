@@ -15,9 +15,10 @@ const SelectionSlider = ({
                 .map(label =>
                     <SingleChoice
                         label={label}
+                        key={label}
                         publishInputValue={publishInputValue}
                         inputValues={inputValues}
-                        width={'120px'}
+                        width={'90px'}
                         height={'40px'}
                     />)}
         </section>
