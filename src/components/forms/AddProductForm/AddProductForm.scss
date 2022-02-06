@@ -32,27 +32,6 @@
     height: fit-content;
     margin-top: -30px;
 
-    .get-product-image {
-      #product-image-input {
-        display: none;
-      }
-
-      #product-image-preview {
-        width: 125px;
-        height: 125px;
-        display: none;
-        overflow: hidden;
-        border-radius: 50%;
-        border: 3px solid #9a2fae;
-        margin-bottom: 5px;
-      }
-
-      #product-image-preview > img {
-        width: 100%;
-        height: auto;
-      }
-    }
-
     .form-content-middle {
       display: flex;
       flex-direction: column;
