@@ -3,6 +3,7 @@ import { ReactComponent as LabelQuestionMark } from 'assets/svg/LabelQuestionMar
 
 import './Label.scss';
 const Label = ({
+    className,
     text,
     fontSize,
     hasQuestionLabel
@@ -11,7 +12,7 @@ const Label = ({
         ...(fontSize ? { fontSize } : {}),
     }
     return (
-        <div className="label">
+        <div className={`label ${className}`}>
             <p className="label-text" style={style}>
                 {text || 'n/a'}
             </p>

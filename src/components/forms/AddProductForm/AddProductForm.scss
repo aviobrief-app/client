@@ -52,6 +52,12 @@
 
       .exact-input {
         font-size: 18px;
+        display: flex;
+        align-items: flex-end;
+
+        .exact-input-label {
+          margin-left: 10px;
+        }
       }
     }
   }

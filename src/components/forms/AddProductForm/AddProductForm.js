@@ -110,7 +110,7 @@ const AddProductForm = () => {
                     </div>
                     <div className="exact-input">
                         <CheckboxItem label='exactBrand' publishInputValue={publishInputValue} />
-                        <Label text={'Exact brand'} fontSize='18px' />
+                        <Label className="exact-input-label" text={'Exact brand'} fontSize='18px' />
                     </div>
                 </div>
             </section>
