@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useYupValidation } from 'hooks/useYupValidation';
 import { addProductFormSchema } from './validations/addProductFormSchema';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+import * as toaster from 'utils/notifyingUX/toaster';
+import { toastMessages } from 'utils/notifyingUX/UXmessages';
 
 import { ReactComponent as CloseButtonPink } from 'assets/svg/CloseButtonPink.svg';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
@@ -21,6 +23,10 @@ const AddProductForm = () => {
     const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { validateForm } = useYupValidation();
+
+
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -36,23 +42,38 @@ const AddProductForm = () => {
 
     const onAddProductClick = (e) => {
         e.preventDefault();
-        console.log(inputValues);
-        const formData = new FormData();
-        formData.append('priority', inputValues.priority)
-        formData.append('productName', inputValues.productName)
-        formData.append('image', inputValues.image)
+        setIsLoading(true);
 
+        validateForm(addProductFormSchema, inputValues)
+            .then(() => {
 
-        productService.addProduct(inputValues)
-            .then(res => {
-                console.log(res);
-            }).catch(err => {
-                console.log(err);
+                const type = inputValues.image.type;
+                if(!(type === "image/jpeg" || type === "image/bmp" || type === "image/png")) { throw new Error('Image type invalid!') }
+
+                setErrors({});
+
+                productService.addProduct(inputValues)
+                    .then((result) => {
+                        setIsSubmitted(true);
+                        toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
+                    })
+                    .catch(err => {
+                        err.message
+                            ? toaster.toastWarning(err.message)
+                            : toaster.toastWarning(toastMessages.PRODUCT_ADD_FAIL)
+                        // loadingUX.dimScreenOut();
+                        // console.log(err);
+                    });
             })
+            .catch((errors) => {
+                setErrors(errors);
+                toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
+                // loadingUX.dimScreenOut();
+            });
+
+        setIsLoading(false);
+
     }
-
-    console.log(inputValues);
-
 
 
     return (

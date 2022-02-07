@@ -45,41 +45,6 @@ export const toastMessages = {
     LOGOUT_OK: 'Logged out, good bye!',
 
 
-    //CoachContext
-    COMPANY_COACH_ADD_OK: `Coach added to company!`,
-    COMPANY_COACH_ADD_FAIL: `Could not add coach!`,
-    COMPANY_COACH_REMOVE_OK: `Coach removed from company!`,
-    COMPANY_COACH_REMOVE_FAIL: `Could not remove coach!`,
-    EMPLOYEE_COACH_BOOK_OK: `Coach booked!`,
-    EMPLOYEE_COACH_BOOK_FAIL: `Coach booking failed!`,
-    EMPLOYEE_COACH_SESSION_RESERVE_OK: `Slot reserved!`,
-    EMPLOYEE_COACH_SESSION_RESERVE_FAIL: `Slot reservation failed!`,
-    EMPLOYEE_COACH_FEEDBACK_OK: `Coach feedback send!`,
-    EMPLOYEE_COACH_FEEDBACK_FAIL: `Coach feedback failed!`,
-
-    //Course Context
-    COMPANY_COURSE_ADD_OK: `Course added to company!`,
-    COMPANY_COURSE_ADD_FAIL: `Could not add course!`,
-    COMPANY_COURSE_REMOVE_OK: `Course removed from company!`,
-    COMPANY_COURSE_REMOVE_FAIL: `Could not remove course!`,
-    EMPLOYEE_COURSE_ENROLL_OK: `Course enrolled successfully!`,
-    EMPLOYEE_COURSE_ENROLL_FAIL: `Could not enroll course!`,
-
-    //courseService
-    ADMIN_COURSE_ADD_OK: `Course add successful!`,
-    ADMIN_COURSE_ADD_FAIL: `Course add failed!`,
-    ADMIN_COURSE_EDIT_OK: `Course edit successful!`,
-    ADMIN_COURSE_EDIT_FAIL: `Course edit failed!`,
-    ADMIN_COURSE_DELETE_OK: `Course delete successful!`,
-    ADMIN_COURSE_DELETE_FAIL: `Course delete failed!`,
-
-    //coachService
-    ADMIN_COACH_ADD_OK: `Course add successful!`,
-    ADMIN_COACH_ADD_FAIL: `Course add failed!`,
-    ADMIN_COACH_EDIT_OK: `Course edit successful!`,
-    ADMIN_COACH_EDIT_FAIL: `Course edit failed!`,
-    ADMIN_COACH_DELETE_OK: `Course delete successful!`,
-    ADMIN_COACH_DELETE_FAIL: `Course delete failed!`,
 
     //userService
     USER_PROFILE_EDIT_OK: `Edit profile successful!`,
@@ -88,5 +53,9 @@ export const toastMessages = {
     //useEmail
     EMAIL_SEND_OK: `Email send successfully!`,
     EMAIL_SEND_FAIL: `Email send failed!`,
+
+    //product service
+    PRODUCT_ADD_OK: 'Product add successful!',
+    PRODUCT_ADD_FAIL: 'Product add fail!'
 
 }
