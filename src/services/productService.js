@@ -1,6 +1,7 @@
 import * as requester from 'services/requester';
 import * as api from 'services/api';
 import { storage, storageRef, uploadBytes, getDownloadURL, deleteObject } from 'config/firebaseStorage';
+import { DateTime } from 'config/dateTime';
 
 
 import * as logger from 'utils/notifyingUX/logger';
@@ -16,7 +17,8 @@ export const addProduct = async (inputValues) => {
                 - await the image upload;
                 - get download url to send to the server.
         */
-        const firebaseStorageRef = storageRef(storage, `productImages/${inputValues.image.name}`);
+        const firebaseStorageRef = storageRef(storage, `productImages/${inputValues.image.name}-${DateTime.local().toMillis}`);
+
         await uploadBytes(firebaseStorageRef, inputValues.image);
         const uploadedImageUrl = await getDownloadURL(firebaseStorageRef);
 
