@@ -11,15 +11,13 @@ export const displaySelectedImageHandler = (publishInputValue, setIsImageSelecte
     function getImgData() {
         const files = chooseFile.files[0];
         if(files) {
-            let dataResult;
             const fileReader = new FileReader();
             fileReader.readAsDataURL(files);
             fileReader.addEventListener("load", function () {
-                dataResult = this.result;
                 imgPreview.style.display = "block";
                 imgPreview.innerHTML = '<img src="' + this.result + '" />';
                 setIsImageSelected(true)
-                publishInputValue('image', dataResult);
+                publishInputValue('image', chooseFile.files[0]);
             });
         }
     }
