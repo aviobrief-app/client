@@ -9,6 +9,7 @@ import './ProductImageUpload.scss';
 const ProductImageUpload = ({
     publishInputValue
 }) => {
+
     const [isImageSelected, setIsImageSelected] = useState(false);
 
     return (

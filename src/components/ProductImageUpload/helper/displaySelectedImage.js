@@ -1,5 +1,6 @@
 export const displaySelectedImageHandler = (publishInputValueFunction, setIsImageSelected) => {
 
+    const takePhotoSVG = document.getElementById("take-photo-svg");
     const chooseFile = document.getElementById("product-image-input");
     const imgPreview = document.getElementById("product-image-preview");
 
