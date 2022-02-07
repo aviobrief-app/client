@@ -56,6 +56,7 @@ const AddProductForm = () => {
                     .then((result) => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
+                        contextSetDisplayModal(false);
                     })
                     .catch(err => {
                         err.message

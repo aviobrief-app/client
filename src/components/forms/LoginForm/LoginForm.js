@@ -6,19 +6,22 @@ import { loginFormSchema } from './validations/loginFormSchema';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
 import * as authService from 'services/authService';
+import { useAuth } from 'contexts/AuthContext';
 
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
-import { ReactComponent as ToiletPaper } from 'assets/svg/ToiletPaper.svg'
+import { ReactComponent as ToiletPaper } from 'assets/svg/ToiletPaper.svg';
 
 
 import './LoginForm.scss';
 const LoginForm = () => {
+
     const navigate = useNavigate();
     const { validateForm } = useYupValidation();
     const [inputValues, setInputValues] = useState({});
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const { setCurrentUserClaims } = useAuth();
 
     const publishInputValue = (inputName, value) => {
         setInputValues((inputValues) => ({
@@ -39,6 +42,7 @@ const LoginForm = () => {
                 authService
                     .loginJWT(inputValues)
                     .then(() => {
+                        setCurrentUserClaims();
                         toaster.toastSuccess(toastMessages.LOGIN_OK);
                         setIsSubmitted(true);
                         navigate('/dev');
