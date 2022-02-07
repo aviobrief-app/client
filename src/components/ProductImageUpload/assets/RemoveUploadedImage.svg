@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="40.00000000000006" height="40.000000000000114" viewBox="222.0 79.0 40.00000000000006 40.000000000000114" preserveAspectRatio="none">
+    <g>
+        <defs>
+            <ellipse cx="242.00000000000003" cy="99.00000000000006" rx="18.00000000000003" ry="18.000000000000057" id="s-Ellipse_4-32ba6-path"></ellipse>
+        </defs>
+        <g style="mix-blend-mode:normal">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Ellipse_4-32ba6-path" fill="#E2208A" fill-opacity="1.0" stroke-width="4.0" stroke="#E2208A"></use>
+        </g>
+    </g>
+    <g>
+        <defs>
+            <path id="s-Path_73-32ba6" d="M251.5625 98.0 L231.4375 98.0 C230.64346091076732 98.0 230.0 98.8194339136968 230.0 99.83062584347033 C230.0 100.84181777324386 230.64346095360816 101.66125168694066 231.4375 101.66125168694066 L251.5625 101.66125168694066 C252.35653908923268 101.66125168694066 253.0 100.84181777324386 253.0 99.83062584347033 C253.0 98.8194339136968 252.35653904639184 98.0 251.5625 98.0 Z "></path>
+        </defs>
+        <g style="mix-blend-mode:normal">
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#s-Path_73-32ba6" fill="#FFFFFF" fill-opacity="1.0" stroke-width="1.0" stroke="#FFFFFF" stroke-linecap="butt"></use>
+        </g>
+    </g>
+</svg>
