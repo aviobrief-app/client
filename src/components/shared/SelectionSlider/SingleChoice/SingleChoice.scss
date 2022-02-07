@@ -4,8 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-left: 2px solid #9a2fae;
 }
 
+.single-choice:nth-child(1) {
+  border-left: none;
+}
 .choice-selected {
   color: white;
   background-color: #9a2fae;

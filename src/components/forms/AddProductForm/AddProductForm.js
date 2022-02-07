@@ -6,6 +6,7 @@ import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import { ReactComponent as CloseButtonPink } from 'assets/svg/CloseButtonPink.svg';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
+import CheckboxItem from 'components/shared/CheckboxItem/CheckboxItem';
 import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
@@ -17,7 +18,7 @@ import './AddProductForm.scss';
 const AddProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
-    const [inputValues, setInputValues] = useState({ priority: 'Now' });
+    const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -49,6 +50,8 @@ const AddProductForm = () => {
                 console.log(err);
             })
     }
+
+    console.log(inputValues);
 
 
 
@@ -85,6 +88,7 @@ const AddProductForm = () => {
                         />
                     </div>
                     <div className="exact-input">
+                        <CheckboxItem label='exactBrand' publishInputValue={publishInputValue} />
                         <Label text={'Exact brand'} fontSize='18px' />
                     </div>
                 </div>

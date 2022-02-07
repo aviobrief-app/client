@@ -11,6 +11,7 @@ import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
 
 export const addProduct = async (inputValues) => {
     try {
+        await requester.validateOnline();
 
         /*  1. Save the image to Firebase Storage:
                 - create reference to the firebase storage for the image;
@@ -18,7 +19,6 @@ export const addProduct = async (inputValues) => {
                 - get download url to send to the server.
         */
         const firebaseStorageRef = storageRef(storage, `productImages/${inputValues.image.name}_${appDateTime().toMillis()}`);
-        console.log(firebaseStorageRef);
 
         await uploadBytes(firebaseStorageRef, inputValues.image);
         const uploadedImageUrl = await getDownloadURL(firebaseStorageRef);

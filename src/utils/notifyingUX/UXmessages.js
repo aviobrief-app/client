@@ -1,5 +1,8 @@
 
 export const consoleMessages = {
+    //requester
+    INTERNET_CONNECTION_LOST: `INTERNET_CONNECTION_LOST`,
+
     //authService
     GET_AUTH_TOKEN_FAIL: `GET_AUTH_TOKEN_FAIL`,
     GET_CSRF_TOKEN_FAIL: `GET_CSRF_TOKEN_FAIL`,
@@ -17,6 +20,9 @@ export const consoleMessages = {
 
 export const toastMessages = {
     SOMETHING_WENT_WRONG: `Something went wrong!`,
+
+    //requester
+    INTERNET_CONNECTION_LOST: `Network lost!`,
 
     //employee
     EMPLOYEES_ADD_OK: 'Employee(s) added!',
