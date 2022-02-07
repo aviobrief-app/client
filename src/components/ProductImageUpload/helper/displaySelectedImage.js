@@ -1,6 +1,5 @@
-export const displaySelectedImageHandler = (publishInputValueFunction, setIsImageSelected) => {
+export const displaySelectedImageHandler = (publishInputValue, setIsImageSelected) => {
 
-    const takePhotoSVG = document.getElementById("take-photo-svg");
     const chooseFile = document.getElementById("product-image-input");
     const imgPreview = document.getElementById("product-image-preview");
 
@@ -20,7 +19,7 @@ export const displaySelectedImageHandler = (publishInputValueFunction, setIsImag
                 imgPreview.style.display = "block";
                 imgPreview.innerHTML = '<img src="' + this.result + '" />';
                 setIsImageSelected(true)
-                publishInputValueFunction('image', dataResult);
+                publishInputValue('image', dataResult);
             });
         }
     }

@@ -12,6 +12,15 @@ const ProductImageUpload = ({
 
     const [isImageSelected, setIsImageSelected] = useState(false);
 
+    const onRemoveUploadedImageClick = () => {
+        publishInputValue('image', null);
+        setIsImageSelected(false)
+
+        const imgPreview = document.getElementById("product-image-preview");
+        imgPreview.innerHTML = '';
+        imgPreview.style.display = "none";
+    }
+
     return (
         <div className="add-product-image">
             <input type="file" accept="image/*" id="product-image-input" />
@@ -26,7 +35,7 @@ const ProductImageUpload = ({
                 </label>
                 :
                 <>
-                    <RemoveUploadedImage className="remove-uploaded-image" />
+                    <RemoveUploadedImage className="remove-uploaded-image" onClick={onRemoveUploadedImageClick} />
                 </>
             }
 
