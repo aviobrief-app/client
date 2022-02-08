@@ -15,8 +15,8 @@ export const logout = () => `${springBaseUrl}/api/auth/logout`;
 export const getAllUsers = () => `${springBaseUrl}/users`;
 
 /* products related*/
-export const addProduct = () => `${springBaseUrl}/products`;
-export const addProductUserOrganization = (organizationId) => `${springBaseUrl}/organizations/${organizationId}/products`;
+export const addProduct = () => `${springBaseUrl}/api/products`;
+export const addProductUserOrganization = (organizationId) => `${springBaseUrl}/api/organizations/${organizationId}/products`;
 
 
 
