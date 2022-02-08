@@ -28,7 +28,7 @@ export const addProduct = async (inputValues) => {
 
         const result = await requester.post(api.addProduct(), inputValues);
 
-        if(result.errors || result.error || !result.ok) { throw (result.message || 'Product add fail!') }
+        if(result.errors || result.error) { throw (result.message || 'Product add fail!') }
 
         return Promise.resolve(result);
 
@@ -58,7 +58,7 @@ export const addProductUserOrganization = async (inputValues, companyId) => {
 
         const result = await requester.post(api.addProductUserOrganization(companyId), inputValues);
 
-        if(result.errors || result.error || !result.ok) { throw (result.message || 'Product add fail!') }
+        if(result.errors || result.error) { throw (result.message || 'Product add fail!') }
 
         return Promise.resolve(result);
 
