@@ -6,10 +6,13 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthContextProvider = ({ children }) => {
 
+    const [currentUser, setCurrentUser] = useState(null);
     const [currentUserClaims, setCurrentUserClaims] = useState(null);
 
 
     const authContextGlobalInfo = {
+        currentUser,
+        setCurrentUser,
         currentUserClaims,
         setCurrentUserClaims,
     };

@@ -30,8 +30,10 @@ export const loginJWT = async (data) => {
 
         sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
         const decodedJwt = jwt_decode(result.accessToken);
+        const currentUser = decodedJwt.sub;
+        const currentUserClaims = result.customClaims;
 
-        return Promise.resolve(decodedJwt);
+        return Promise.resolve({ currentUser, currentUserClaims });
     } catch(err) {
         return Promise.reject(err);
     }

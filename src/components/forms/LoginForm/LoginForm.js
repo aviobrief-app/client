@@ -21,7 +21,7 @@ const LoginForm = () => {
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { setCurrentUserClaims } = useAuth();
+    const { setCurrentUser, setCurrentUserClaims } = useAuth();
 
     const publishInputValue = (inputName, value) => {
         setInputValues((inputValues) => ({
@@ -41,8 +41,9 @@ const LoginForm = () => {
 
                 authService
                     .loginJWT(inputValues)
-                    .then(() => {
-                        setCurrentUserClaims();
+                    .then((loginResponse) => {
+                        setCurrentUser(loginResponse.currentUser);
+                        setCurrentUserClaims(loginResponse.currentUserClaims);
                         toaster.toastSuccess(toastMessages.LOGIN_OK);
                         setIsSubmitted(true);
                         navigate('/dev');
