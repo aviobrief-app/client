@@ -40,20 +40,21 @@ export const addProduct = async (inputValues) => {
 export const addProductUserOrganization = async (inputValues, companyId) => {
     try {
 
-        await requester.validateOnline();
+        // await requester.validateOnline();
 
-        /*  1. Save the image to Firebase Storage:
-                - create reference to the firebase storage for the image;
-                - await the image upload;
-                - get download url to send to the server.
-        */
-        const firebaseStorageRef = storageRef(storage, `productImages/${inputValues.image.name}_${appDateTime().toMillis()}`);
+        // /*  1. Save the image to Firebase Storage:
+        //         - create reference to the firebase storage for the image;
+        //         - await the image upload;
+        //         - get download url to send to the server.
+        // */
+        // const firebaseStorageRef = storageRef(storage, `productImages/${inputValues.image.name}_${appDateTime().toMillis()}`);
 
-        await uploadBytes(firebaseStorageRef, inputValues.image);
-        const uploadedImageUrl = await getDownloadURL(firebaseStorageRef);
+        // await uploadBytes(firebaseStorageRef, inputValues.image);
+        // const uploadedImageUrl = await getDownloadURL(firebaseStorageRef);
 
         /* 2. Modify inputValues with image url instead of file */
-        inputValues.image = uploadedImageUrl;
+        // inputValues.image = uploadedImageUrl;
+        inputValues.image = 'dev_url';
 
         const result = await requester.post(api.addProductUserOrganization(companyId), inputValues);
 
