@@ -27,13 +27,17 @@ export const addProduct = async (inputValues) => {
         inputValues.image = uploadedImageUrl;
 
         const result = await requester.post(api.addProduct(), inputValues);
+
+        if(result.errors || result.error || !result.ok) { throw (result.message || 'Product add fail!') }
+
         return Promise.resolve(result);
+
     } catch(err) {
         return Promise.reject(err);
     }
 }
 
-export const addProductUserOrganization = async (inputValues) => {
+export const addProductUserOrganization = async (inputValues, companyId) => {
     try {
 
         await requester.validateOnline();
@@ -51,8 +55,12 @@ export const addProductUserOrganization = async (inputValues) => {
         /* 2. Modify inputValues with image url instead of file */
         inputValues.image = uploadedImageUrl;
 
-        const result = await requester.post(api.addProduct(), inputValues);
+        const result = await requester.post(api.addProductUserOrganization(companyId), inputValues);
+
+        if(result.errors || result.error || !result.ok) { throw (result.message || 'Product add fail!') }
+
         return Promise.resolve(result);
+
     } catch(err) {
         return Promise.reject(err);
     }

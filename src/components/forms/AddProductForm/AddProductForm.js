@@ -50,7 +50,7 @@ const AddProductForm = () => {
 
                 setErrors({});
 
-                productService.addProduct(inputValues)
+                productService.addProductUserOrganization(inputValues, currentUserClaims.organizationId)
                     .then((result) => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
