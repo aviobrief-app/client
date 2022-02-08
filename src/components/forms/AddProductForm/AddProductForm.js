@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import useCurrentUserClaims from 'hooks/useCurrentUserClaims';
 import { useYupValidation } from 'hooks/useYupValidation';
 import { addProductFormSchema } from './validations/addProductFormSchema';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
@@ -23,10 +24,8 @@ const AddProductForm = () => {
     const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
     const { validateForm } = useYupValidation();
-
-
+    const [isLoading, currentUserClaims] = useCurrentUserClaims();
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -42,7 +41,6 @@ const AddProductForm = () => {
 
     const onAddProductClick = (e) => {
         e.preventDefault();
-        setIsLoading(true);
 
         validateForm(addProductFormSchema, inputValues)
             .then(() => {
@@ -71,14 +69,11 @@ const AddProductForm = () => {
                 toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
                 // loadingUX.dimScreenOut();
             });
-
-        setIsLoading(false);
-
     }
 
 
     return (
-        <form className="add-product-form" >
+        !isLoading && <form className="add-product-form" >
             <div className="form-header">
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
