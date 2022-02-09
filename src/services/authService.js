@@ -74,13 +74,13 @@ export const getCsrfToken = () => {
 
 const fetchDeviceLocationIp = async () => {
     try {
-        // await requester.validateOnline();
-        // const response = await fetch('https://geolocation-db.com/json/');
+        await requester.validateOnline();
+        const response = await fetch('https://geolocation-db.com/json/');
 
-        // const geoData = await response.json();
-        // const { IPv4 } = geoData;
-        // return IPv4;
-        return '271.0.0.0';
+        const geoData = await response.json();
+        const { IPv4 } = geoData;
+        return IPv4;
+        // return '271.0.0.0';
     } catch(err) {
         logger.logWarning(consoleMessages.FETCH_DEVICE_LOCATION_IP_FAIL);
         return Promise.reject(consoleMessages.FETCH_DEVICE_LOCATION_IP_FAIL);
