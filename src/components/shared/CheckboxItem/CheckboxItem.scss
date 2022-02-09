@@ -1,0 +1,21 @@
+.checkbox-item-wrapper {
+  width: fit-content;
+  height: fit-content;
+
+  .icon-container {
+    padding: 0px;
+    border-radius: 0px;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+
+    .checkbox-icon {
+      width: 100%;
+      height: auto;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

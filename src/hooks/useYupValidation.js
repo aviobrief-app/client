@@ -11,7 +11,7 @@ const validateForm = async (validationSchema, inputValues) => {
         .then((result) => result)
         .catch((err) => err);
 
-    if (validationResult.errors) {
+    if(validationResult.errors) {
         const errorsObject = validationResult.inner;
         const fieldMessageArray = errorsObject.map((err) => [
             err.path,
@@ -23,13 +23,13 @@ const validateForm = async (validationSchema, inputValues) => {
             errPair
         ) {
             let key = errPair[0];
-            if (!acc[key]) {
+            if(!acc[key]) {
                 acc[key] = [];
             }
             acc[key].push(errPair[1]);
             return acc;
         },
-        {});
+            {});
 
         throw messagesGroupedByField;
     }
@@ -43,7 +43,7 @@ const validateInputField = async (validationSchema, inputValue, inputName) => {
         .then((result) => result)
         .catch((err) => err);
 
-    if (validationResult.errors) {
+    if(validationResult.errors) {
         const errorsObject = validationResult.inner;
         const fieldMessageArray = errorsObject.map((err) => [
             err.path,
@@ -56,19 +56,19 @@ const validateInputField = async (validationSchema, inputValue, inputName) => {
         ) {
             let key = errPair[0];
 
-            if (key !== inputName) {
+            if(key !== inputName) {
                 return acc;
             }
 
-            if (!acc[key]) {
+            if(!acc[key]) {
                 acc[key] = [];
             }
             acc[key].push(errPair[1]);
             return acc;
         },
-        {});
+            {});
 
-        if (!messagesGroupedByField[inputName]) {
+        if(!messagesGroupedByField[inputName]) {
             return;
         }
 

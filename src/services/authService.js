@@ -30,8 +30,10 @@ export const loginJWT = async (data) => {
 
         sessionStorage.setItem(ACCESS_TOKEN, result.accessToken);
         const decodedJwt = jwt_decode(result.accessToken);
+        const currentUser = decodedJwt.sub;
+        const currentUserClaims = result.customClaims;
 
-        return Promise.resolve(decodedJwt);
+        return Promise.resolve({ currentUser, currentUserClaims });
     } catch(err) {
         return Promise.reject(err);
     }
@@ -72,12 +74,16 @@ export const getCsrfToken = () => {
 
 const fetchDeviceLocationIp = async () => {
     try {
+        await requester.validateOnline();
         const response = await fetch('https://geolocation-db.com/json/');
+
         const geoData = await response.json();
         const { IPv4 } = geoData;
         return IPv4;
+        // return '271.0.0.0';
     } catch(err) {
         logger.logWarning(consoleMessages.FETCH_DEVICE_LOCATION_IP_FAIL);
+        return Promise.reject(consoleMessages.FETCH_DEVICE_LOCATION_IP_FAIL);
     }
 };
 
@@ -87,8 +93,10 @@ export const getLocationIp = () => {
         return deviceLocationIp;
     } catch(err) {
         logger.logWarning(consoleMessages.GET_DEVICE_LOCATION_IP_FAIL);
+        return Promise.reject(consoleMessages.GET_DEVICE_LOCATION_IP_FAIL);
     }
 };
+
 
 
 /*

@@ -1,5 +1,9 @@
 import * as authService from 'services/authService';
 
+import * as logger from 'utils/notifyingUX/logger';
+import * as toaster from 'utils/notifyingUX/toaster';
+import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
+
 const request = async (method, url, data) => {
     let token = authService.getToken();
     const csrfToken = authService.getCsrfToken();
@@ -43,3 +47,12 @@ export const post = request.bind(null, 'POST');
 export const put = request.bind(null, 'PUT');
 export const del = request.bind(null, 'DELETE');
 export const patch = request.bind(null, 'PATCH');
+export const validateOnline = async () => {
+    try {
+        await fetch('https://geolocation-db.com/json/');
+    } catch(err) {
+        logger.logError(consoleMessages.INTERNET_CONNECTION_LOST);
+        toaster.toastError(toastMessages.INTERNET_CONNECTION_LOST);
+        throw new Error(`${consoleMessages.INTERNET_CONNECTION_LOST}`);
+    }
+}
