@@ -13,8 +13,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
 
         <Route path="/dashboard" element={withNavbar(Dashboard)} />
         <Route path="/to-buy" element={withNavbar(ToBuy)} />
