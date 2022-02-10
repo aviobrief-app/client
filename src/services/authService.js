@@ -22,6 +22,10 @@ export const registerOrganizationOwner = async (data) => {
 
 export const loginJWT = async (data) => {
     try {
+        sessionStorage.removeItem(ACCESS_TOKEN);
+        sessionStorage.removeItem('x-csrf-token');
+        sessionStorage.removeItem('device-location-ip');
+
         const deviceLocation = await fetchDeviceLocationIp();
         sessionStorage.setItem('device-location-ip', deviceLocation);
 
