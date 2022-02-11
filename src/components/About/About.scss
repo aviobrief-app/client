@@ -2,10 +2,10 @@
 
 .about {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 35px;
-  padding-right: 120px;
+  padding-right: 25px;
   padding-left: 25px;
 
   width: 95%;
@@ -22,5 +22,25 @@
     height: auto;
     width: fit-content;
     box-shadow: none;
+  }
+
+  .right {
+    position: relative;
+
+    .about-menu {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: space-between;
+      margin-right: 70px;
+      margin-top: 40px;
+
+      width: 430px;
+    }
   }
 }
