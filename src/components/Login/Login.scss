@@ -12,6 +12,7 @@
   height: 90vh;
   margin-top: 50px;
   @include fluid-margin-top(700px, 1440px, 10px, 50px);
+
   box-shadow: 0 0 10px #d2198d8f;
 
   @media all and (max-width: 650px) {
