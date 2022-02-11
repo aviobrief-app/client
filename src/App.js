@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 
-import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/RegisterOrganizationOwner';
+import About from 'components/About/About';
 import Login from 'components/Login/Login';
+import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/RegisterOrganizationOwner';
 import Dashboard from 'components/Dashboard/Dashboard';
 import ToBuy from 'components/ToBuy/ToBuy';
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
 

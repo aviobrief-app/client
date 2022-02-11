@@ -1,0 +1,26 @@
+@import "../../styles/fluid.scss";
+
+.about {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 35px;
+  padding-right: 120px;
+  padding-left: 25px;
+
+  width: 95%;
+  height: 90vh;
+  margin-top: 50px;
+  @include fluid-margin-top(700px, 1440px, 10px, 50px);
+  box-shadow: 0 0 10px #d2198d8f;
+
+  @media all and (max-width: 650px) {
+    margin: 30 auto;
+    padding: 20px !important;
+    padding-top: 30px !important;
+    margin-top: 30px;
+    height: auto;
+    width: fit-content;
+    box-shadow: none;
+  }
+}
