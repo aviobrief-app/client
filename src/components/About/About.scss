@@ -7,10 +7,10 @@
 
   width: 1100px;
   height: 570px;
-  margin-top: 100px;
+  margin-top: 60px;
   box-shadow: 0 0 10px #d2198d8f;
 
-  @include fluid-margin-top(700px, 1440px, 10px, 100px);
+  @include fluid-margin-top(700px, 1440px, 10px, 60px);
   @include fluid-width(700px, 1440px, 690px, 1100px);
   @include fluid-height(700px, 1440px, 400px, 570px);
 
