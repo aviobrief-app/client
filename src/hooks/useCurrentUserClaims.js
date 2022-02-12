@@ -6,6 +6,7 @@ import { useAuth } from 'contexts/AuthContext';
 const useCurrentUserClaims = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { currentUserClaims } = useAuth();
+    console.log(currentUserClaims);
 
     useEffect(() => {
         if(!currentUserClaims) { return }

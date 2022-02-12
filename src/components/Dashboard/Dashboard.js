@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import AddProductButton from 'components/AddProductButton/AddProductButton';
@@ -8,11 +9,11 @@ import AddProductForm from 'components/forms/AddProductForm/AddProductForm';
 import './Dashboard.scss';
 const Dashboard = () => {
 
-    const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
+    const navigate = useNavigate();
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
-        contextSetDisplayModal(true);
+        navigate('/purchases')
     }
 
     return (
@@ -21,11 +22,6 @@ const Dashboard = () => {
                 <AddProductButton />
             </section>
 
-            {contextDisplayModal &&
-                <ModalBackdrop >
-                    <AddProductForm />
-                </ModalBackdrop>
-            }
         </section>
     )
 }

@@ -1,14 +1,25 @@
 
-import { Button, TextField } from '@mui/material';
+import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 import SearchBarWithIcon from 'components/shared/SearchBarWithIcon/SearchBarWithIcon';
+import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+
+import AddProductButton from 'components/AddProductButton/AddProductButton';
+import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
+import AddProductForm from 'components/forms/AddProductForm/AddProductForm';
 
 import './Purchases.scss';
 const Purchases = () => {
 
 
+    const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
+
+    const onAddProductButtonClick = (e) => {
+        e.preventDefault();
+        contextSetDisplayModal(true);
+    }
 
 
     return (
@@ -19,6 +30,7 @@ const Purchases = () => {
                         className="add-button"
                         variant="contained"
                         startIcon={<AddIcon className="add-icon" />}
+                        onClick={onAddProductButtonClick}
                     >
                         Add
                     </Button>
@@ -35,6 +47,12 @@ const Purchases = () => {
 
                 </span>
             </section>
+
+            {contextDisplayModal &&
+                <ModalBackdrop >
+                    <AddProductForm />
+                </ModalBackdrop>
+            }
 
         </section>
     )
