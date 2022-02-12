@@ -1,0 +1,150 @@
+@import "../../styles/fluid.scss";
+
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 1100px;
+  height: 570px;
+  margin-top: 60px;
+  box-shadow: 0 0 10px #d2198d8f;
+
+  @include fluid-margin-top(700px, 1440px, 10px, 60px);
+  @include fluid-width(700px, 1440px, 690px, 1100px);
+  @include fluid-height(700px, 1440px, 400px, 570px);
+
+  @media all and (max-width: 650px) {
+    margin: 30 auto;
+    padding: 20px !important;
+    padding-top: 30px !important;
+    margin-top: 30px;
+    height: auto;
+    width: fit-content;
+    box-shadow: none;
+  }
+
+  .left {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    width: 490px;
+    height: 520px;
+    margin-top: 20px;
+    margin-right: -350px;
+
+    margin-left: 90px;
+
+    @include fluid-height(700px, 1440px, 380px, 520px);
+
+    .logo {
+      margin-bottom: 80px;
+    }
+
+    .headers {
+      margin-bottom: 70px;
+      @include fluid-margin-bottom(700px, 1440px, 30px, 70px);
+
+      .header-one {
+        font-size: 42px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+
+        @include fluid-font-size(700px, 1440px, 30px, 42px);
+      }
+
+      .header-two {
+        font-size: 20px;
+        font-weight: bold;
+        color: #999999;
+        letter-spacing: 2px;
+      }
+    }
+
+    .buttons {
+      margin-bottom: 80px;
+      @include fluid-margin-bottom(700px, 1440px, 20px, 80px);
+
+      .first-row {
+        display: flex;
+        width: 320px;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .register-button-container {
+          width: 140px;
+          height: 40px;
+        }
+
+        .watch-video-button-container {
+          width: 140px;
+          height: 40px;
+
+          border: 1px solid #e2208a;
+
+          font-size: 16px;
+          letter-spacing: 1.5px;
+        }
+        .watch-video-button-container:hover {
+          cursor: none;
+        }
+      }
+
+      .second-row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        font-family: "Malgun Gothic";
+        font-size: 15px;
+        letter-spacing: 1.2px;
+        .question {
+          margin-right: 10px;
+        }
+        .login-link {
+          color: #e2208a;
+          text-decoration: underline;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .see-more-section {
+      .see-more {
+        font-size: 12px;
+        font-weight: bold;
+        color: #999999;
+        letter-spacing: 2px;
+      }
+    }
+  }
+
+  .right {
+    position: relative;
+
+    .about-menu {
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      display: flex;
+      justify-content: space-between;
+      margin-right: 70px;
+      margin-top: 40px;
+
+      width: 430px;
+    }
+
+    .background {
+      @include fluid-height(700px, 1440px, 400px, 570px);
+      width: auto;
+    }
+  }
+}
