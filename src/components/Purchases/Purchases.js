@@ -1,7 +1,7 @@
 
 
-import './ToBuy.scss';
-const ToBuy = () => {
+import './Purchases.scss';
+const Purchases = () => {
     return (
         <section className="to-buy">
             to buy
@@ -11,4 +11,4 @@ const ToBuy = () => {
 }
 
 
-export default ToBuy;
+export default Purchases;

@@ -4,7 +4,7 @@ import About from 'components/About/About';
 import Login from 'components/Login/Login';
 import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/RegisterOrganizationOwner';
 import Dashboard from 'components/Dashboard/Dashboard';
-import ToBuy from 'components/ToBuy/ToBuy';
+import Purchases from 'components/Purchases/Purchases';
 
 import withNavbar from 'components/hoc/withNavbar';
 
@@ -19,7 +19,7 @@ function App() {
         <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
 
         <Route path="/dashboard" element={withNavbar(Dashboard)} />
-        <Route path="/to-buy" element={withNavbar(ToBuy)} />
+        <Route path="/purchases" element={withNavbar(Purchases)} />
 
 
         <Route path="/.well-known/first-party-set" element={JSON.stringify("test")} />
