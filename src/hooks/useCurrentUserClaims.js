@@ -4,16 +4,15 @@ import { useState, useEffect } from 'react';
 import { useAuth } from 'contexts/AuthContext';
 
 const useCurrentUserClaims = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [claimsAreLoading, setClaimsAreLoading] = useState(true);
     const { currentUserClaims } = useAuth();
-    console.log(currentUserClaims);
 
     useEffect(() => {
         if(!currentUserClaims) { return }
-        setIsLoading(false);
+        setClaimsAreLoading(false);
     }, [currentUserClaims]);
 
-    return [isLoading, currentUserClaims]
+    return [claimsAreLoading, currentUserClaims]
 }
 
 

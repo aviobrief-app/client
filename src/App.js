@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from '@mui/styles';
 import { createTheme } from '@mui/material/styles';
+import { PurchaseContextProvider } from 'contexts/PurchaseContext';
 
 
 import About from 'components/About/About';
@@ -43,17 +44,18 @@ function App() {
     <ThemeProvider theme={theme}>
 
       <div className="App">
-        <Routes>
-          <Route path="/" element={<About />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
+        <PurchaseContextProvider>
+          <Routes>
+            <Route path="/" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
+            <Route path="/dashboard" element={withNavbar(Dashboard)} />
+            <Route path="/purchases" element={withNavbar(Purchases)} />
+          </Routes>
+        </PurchaseContextProvider>
 
-          <Route path="/dashboard" element={withNavbar(Dashboard)} />
-          <Route path="/purchases" element={withNavbar(Purchases)} />
 
-
-          <Route path="/.well-known/first-party-set" element={JSON.stringify("test")} />
-        </Routes>
+        {/* <Route path="/.well-known/first-party-set" element={JSON.stringify("test")} /> */}
       </div>
     </ThemeProvider>
 

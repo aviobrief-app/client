@@ -1,20 +1,31 @@
 
+import { useEffect } from 'react';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
 import SearchBarWithIcon from 'components/shared/SearchBarWithIcon/SearchBarWithIcon';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+import { useAuth } from 'contexts/AuthContext';
 
-import AddProductButton from 'components/AddProductButton/AddProductButton';
 import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
-import AddProductForm from 'components/forms/AddProductForm/AddProductForm';
+import AddPurchaseAndProductForm from 'components/forms/AddPurchaseAndProductForm/AddPurchaseAndProductForm';
+
+import * as organizationService from 'services/organizationService';
+
 
 import './Purchases.scss';
 const Purchases = () => {
 
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
+    const { currentUserClaims } = useAuth();
+
+    useEffect(() => {
+        organizationService.getOrganizationPurchases(currentUserClaims.organizationId)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }, [currentUserClaims])
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
@@ -50,7 +61,7 @@ const Purchases = () => {
 
             {contextDisplayModal &&
                 <ModalBackdrop >
-                    <AddProductForm />
+                    <AddPurchaseAndProductForm />
                 </ModalBackdrop>
             }
 

@@ -1,10 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 
 import AddProductButton from 'components/AddProductButton/AddProductButton';
-import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
-import AddProductForm from 'components/forms/AddProductForm/AddProductForm';
-
 
 import './Dashboard.scss';
 const Dashboard = () => {
