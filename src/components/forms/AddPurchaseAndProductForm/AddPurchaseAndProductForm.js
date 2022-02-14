@@ -12,7 +12,7 @@ import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
 import CheckboxItem from 'components/shared/CheckboxItem/CheckboxItem';
 import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
-import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
+import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
 
 import * as organizationService from 'services/organizationService';
