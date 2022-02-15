@@ -9,7 +9,7 @@ const Dashboard = () => {
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
-        navigate('/purchases')
+        navigate('/profile/purchases')
     }
 
     return (

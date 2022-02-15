@@ -46,7 +46,7 @@ const LoginForm = () => {
                         setCurrentUserClaims(loginResponse.currentUserClaims);
                         toaster.toastSuccess(toastMessages.LOGIN_OK);
                         setIsSubmitted(true);
-                        navigate('/dashboard');
+                        navigate('/profile/dashboard');
                         // loadingUX.dimScreenOut();
                     })
                     .catch(err => {
