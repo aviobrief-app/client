@@ -6,7 +6,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 
 import SearchBarWithIcon from 'components/shared/SearchBarWithIcon/SearchBarWithIcon';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
-import { useAuth } from 'contexts/AuthContext';
+import { usePurchaseContext } from 'contexts/PurchaseContext';
 
 import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
 import AddPurchaseAndProductForm from 'components/forms/AddPurchaseAndProductForm/AddPurchaseAndProductForm';
@@ -14,20 +14,16 @@ import PurchaseCard from 'components/PurchaseCard/PurchaseCard';
 
 import * as organizationService from 'services/organizationService';
 
-
+import Loading from 'components/shared/Loading/Loading';
 import './Purchases.scss';
 const Purchases = () => {
 
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
-    const { currentUserClaims } = useAuth();
-    const [purchases, setPurchases] = useState(null);
+    const { orgPurchases } = usePurchaseContext();
+    console.log();
 
-    useEffect(() => {
-        organizationService.getOrganizationPurchases(currentUserClaims.organizationId)
-            .then(res => setPurchases(res))
-            .catch(err => console.log(err))
-    }, [])
+
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
@@ -60,13 +56,15 @@ const Purchases = () => {
 
                 </span>
             </section>
+
             <section className="purchase-items">
-                {purchases && purchases.map(purchase =>
+
+                {orgPurchases ? orgPurchases.map(purchase =>
                     <PurchaseCard
                         key={purchase._id}
-
                     />
-                )}
+                )
+                    : <Loading />}
             </section>
 
             {contextDisplayModal &&

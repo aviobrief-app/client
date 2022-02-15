@@ -16,6 +16,10 @@ export const consoleMessages = {
     //email service, useEmail
     EMAIL_SEND_FAIL: `EMAIL_SEND_FAIL`,
 
+
+    //Purchase Context
+    ORG_PURCHASE_DATA_LOAD_FAIL: `ORG_PURCHASE_DATA_LOAD_FAIL`,
+
 }
 
 export const toastMessages = {
@@ -56,6 +60,9 @@ export const toastMessages = {
 
     //product service
     PRODUCT_ADD_OK: 'Product add successful!',
-    PRODUCT_ADD_FAIL: 'Product add fail!'
+    PRODUCT_ADD_FAIL: 'Product add fail!',
+
+    //Purchase Context
+    ORG_PURCHASE_DATA_LOAD_FAIL: `Purchases load failed!`,
 
 }
