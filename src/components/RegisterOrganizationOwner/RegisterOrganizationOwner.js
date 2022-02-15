@@ -10,14 +10,16 @@ const RegisterOrganizationOwner = () => {
 
 
     return (
-        <section className="register-organization-owner">
-            <aside className="left-graphics">
-                <PinkBackground className="pink-background" />
-                <BasketWithItems className="basket" />
-                <ManRunning className="human" />
-            </aside>
-            <RegisterOwnerForm />
-        </section>
+        <main>
+            <section className="register-organization-owner">
+                <aside className="left-graphics">
+                    <PinkBackground className="pink-background" />
+                    <BasketWithItems className="basket" />
+                    <ManRunning className="human" />
+                </aside>
+                <RegisterOwnerForm />
+            </section>
+        </main>
     )
 }
 

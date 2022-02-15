@@ -17,7 +17,6 @@ const Dashboard = () => {
             <section className="add-button" onClick={onAddProductButtonClick}>
                 <AddProductButton />
             </section>
-
         </section>
     )
 }
