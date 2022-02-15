@@ -13,7 +13,6 @@ export const PurchaseContextProvider = (
     { children }
 ) => {
 
-
     /* DATA */
     const [appPurchases, setAppPurchases] = useState(null);
 

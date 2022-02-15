@@ -22,9 +22,5 @@ export const ModalBackdropContextProvider = ({ children }) => {
 
 }
 
-
-
-
-
 export default ModalBackdropContext;
 

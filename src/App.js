@@ -9,12 +9,13 @@ import Login from 'components/Login/Login';
 import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/RegisterOrganizationOwner';
 
 /* PROFILE PAGES -> logged in (authenticated) users with data contexts */
-import ProfilePage from 'components/router/ProfilePage/ProfilePage';
+import ProfilePage from 'components/Routers/ProfilePage/ProfilePage';
 import Dashboard from 'components/Dashboard/Dashboard';
 import Purchases from 'components/Purchases/Purchases';
 
 /* HOC */
 import withNavbar from 'components/hoc/withNavbar';
+import withPurchaseContext from 'components/hoc/withPurchaseContext';
 
 import './App.css';
 function App() {
@@ -27,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
 
-        <Route path="/profile" element={withNavbar(ProfilePage)}>
+        <Route path="/profile" element={withPurchaseContext(withNavbar(ProfilePage))}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="purchases" element={<Purchases />} />
         </Route>
