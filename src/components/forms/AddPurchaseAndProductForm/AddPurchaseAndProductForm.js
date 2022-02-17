@@ -12,20 +12,20 @@ import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
 import CheckboxItem from 'components/shared/CheckboxItem/CheckboxItem';
 import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
-import SelectionSlider from 'components/shared/SelectionSlider/SelectionSlider';
+import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
 
-import * as productService from 'services/productService';
+import * as organizationService from 'services/organizationService';
 
-import './AddProductForm.scss';
-const AddProductForm = () => {
+import './AddPurchaseAndProductForm.scss';
+const AddPurchaseAndProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
     const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { validateForm } = useYupValidation();
-    const [isLoading, currentUserClaims] = useCurrentUserClaims();
+    const [claimsAreLoading, currentUserClaims] = useCurrentUserClaims();
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -50,7 +50,7 @@ const AddProductForm = () => {
 
                 setErrors({});
 
-                productService.addProductUserOrganization(inputValues, currentUserClaims.organizationId)
+                organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId)
                     .then((result) => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
@@ -73,7 +73,7 @@ const AddProductForm = () => {
 
 
     return (
-        !isLoading && <form className="add-product-form" >
+        !claimsAreLoading && <form className="add-product-form" >
             <div className="form-header">
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
@@ -126,4 +126,4 @@ const AddProductForm = () => {
     )
 }
 
-export default AddProductForm;
+export default AddPurchaseAndProductForm;

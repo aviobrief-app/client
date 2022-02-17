@@ -1,0 +1,9 @@
+.picture-element {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.picture-element > img {
+  width: 100%;
+  height: 100%;
+}

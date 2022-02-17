@@ -1,7 +1,7 @@
 
 
 import { ReactComponent as MobileMenu } from 'assets/svg/MobileMenu.svg';
-import ShoppingBagWithItemsCount from 'components/ShoppingBagWithItemsCount/ShoppingBagWithItemsCount';
+import ShoppingBagWithItemsCount from 'components/shared/ShoppingBagWithItemsCount/ShoppingBagWithItemsCount';
 
 import './Navbar.scss';
 const Navbar = () => {
