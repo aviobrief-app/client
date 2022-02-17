@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import { useDBContextService } from 'hooks/useDBContextService';
 import { useAuth } from 'contexts/AuthContext';
 
@@ -16,21 +17,29 @@ export const PurchaseContextProvider = (
 
     const { currentUserClaims } = useAuth();
     const [fetchPurchaseDataByRole] = useDBContextService();
+    const location = useLocation();
 
-    /* DATA */
+
+    /* APPLICATION DATA */
     const [orgPurchases, setOrgPurchases] = useState(null);
 
     useEffect(() => {
         refreshDataFromDB();
     }, [])
 
+    useEffect(() => {
+        if(location.pathname === '/profile/purchases') {
+            refreshDataFromDB();
+        }
+    }, [location.pathname]);
+
     const refreshDataFromDB = () => {
         fetchPurchaseDataByRole(currentUserClaims)
             .then(([orgPurchases]) => {
-                setTimeout(() => { setOrgPurchases(orgPurchases) }, 1000);
+                setOrgPurchases(orgPurchases);
             })
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 logger.logWarning(consoleMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
                 toaster.toastWarning(toastMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
             })
