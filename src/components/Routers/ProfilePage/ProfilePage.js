@@ -7,7 +7,6 @@ const ProfilePage = () => {
             <Outlet />
         </section>
     );
-
 }
 
 export default ProfilePage;

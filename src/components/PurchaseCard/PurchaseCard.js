@@ -2,10 +2,19 @@
 import PictureElement from 'components/shared/PictureElement/PictureElement';
 
 import './PurchaseCard.scss';
-const PurchaseCard = (purchaseInfo) => {
+const PurchaseCard = ({
+    priority,
+    product,
+
+}) => {
     return (
         <section className="purchase-card">
-            <p className="">purchaseInfo</p>
+            <PictureElement
+                size={'70px'}
+                isArchived={false}
+                priority={priority}
+                imageUrl={product.image}
+            />
         </section>
     )
 }
