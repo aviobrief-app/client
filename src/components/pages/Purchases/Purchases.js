@@ -21,8 +21,7 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
-    console.log();
-
+    console.log(orgPurchases);
 
 
     const onAddProductButtonClick = (e) => {
@@ -53,17 +52,18 @@ const Purchases = () => {
                 </span>
                 <span className="search-field">
                     <SearchBarWithIcon placeholder="search to buy..." />
-
                 </span>
             </section>
 
-            <section className="purchase-items">
-
-                {orgPurchases ? orgPurchases.map(purchase =>
-                    <PurchaseCard
-                        key={purchase._id}
-                    />
-                )
+            <section className="purchase-items-list">
+                {orgPurchases
+                    ? orgPurchases
+                        .map(purchase =>
+                            <PurchaseCard
+                                key={purchase._id}
+                                priority={purchase.priority}
+                                product={purchase.product}
+                            />)
                     : <Loading />}
             </section>
 

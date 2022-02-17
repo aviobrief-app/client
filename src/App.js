@@ -4,14 +4,14 @@ import { createTheme } from '@mui/material/styles';
 import { PurchaseContextProvider } from 'contexts/PurchaseContext';
 
 /* NOT AUTHENTICATED PAGES -> no logged in users, no data contexts */
-import About from 'components/About/About';
-import Login from 'components/Login/Login';
-import RegisterOrganizationOwner from 'components/RegisterOrganizationOwner/RegisterOrganizationOwner';
+import About from 'components/pages/About/About';
+import Login from 'components/pages/Login/Login';
+import RegisterOrganizationOwner from 'components/pages/RegisterOrganizationOwner/RegisterOrganizationOwner';
 
 /* PROFILE PAGES -> logged in (authenticated) users with data contexts */
-import ProfilePage from 'components/Routers/ProfilePage/ProfilePage';
-import Dashboard from 'components/Dashboard/Dashboard';
-import Purchases from 'components/Purchases/Purchases';
+import ProfilePage from 'components/routers/ProfilePage/ProfilePage';
+import Dashboard from 'components/pages/Dashboard/Dashboard';
+import Purchases from 'components/pages/Purchases/Purchases';
 
 /* HOC */
 import withNavbar from 'components/hoc/withNavbar';
