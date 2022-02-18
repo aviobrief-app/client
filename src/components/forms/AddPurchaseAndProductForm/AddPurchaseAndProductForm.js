@@ -47,8 +47,7 @@ const AddPurchaseAndProductForm = () => {
 
 
 
-    // console.log(inputValues);
-    // console.log(productPackages);
+    console.log(inputValues);
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -105,6 +104,7 @@ const AddPurchaseAndProductForm = () => {
                     publishInputValue={publishInputValue}
                 />
                 <div className="form-content-middle">
+
                     <div className="name-input">
                         <Label text={'Name:'} />
                         <div className="input-container">
@@ -118,12 +118,12 @@ const AddPurchaseAndProductForm = () => {
                                 validations={addProductFormSchema}
                             />
                         </div>
-                    </div>
-                    <div className="package-input">
-                        <ProductPackageDropdownInput
-                            productPackages={productPackages}
-                            publishInputValue={publishInputValue}
-                        />
+                        <div className="package-input">
+                            <ProductPackageDropdownInput
+                                productPackages={productPackages}
+                                publishInputValue={publishInputValue}
+                            />
+                        </div>
                     </div>
                     <div className="priority-input">
                         <Label text={'Priority:'} />

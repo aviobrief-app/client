@@ -22,8 +22,12 @@ const ProductPackageDropdownInput = ({
 
     return (
         <section className="product-package-dropdown-input">
-            <FormControl sx={{ m: 1, minWidth: 120 }} className="form-control" size="small">
+            <FormControl
+                sx={{ minWidth: 60 }}
+                margin='dense'
+                className="form-control" size="small">
                 <Select
+                    SelectDisplayProps={{ height: '30px' }}
                     labelId="demo-simple-select-autowidth-label"
                     id="demo-simple-select-autowidth"
                     value={productPackage}

@@ -67,3 +67,12 @@
   width: 273px;
   height: 40px;
 }
+.name-input {
+  position: relative;
+
+  .package-input {
+    position: absolute;
+    right: 4px;
+    bottom: 0;
+  }
+}
