@@ -9,7 +9,7 @@ import Login from 'components/pages/Login/Login';
 import RegisterOrganizationOwner from 'components/pages/RegisterOrganizationOwner/RegisterOrganizationOwner';
 
 /* PROFILE PAGES -> logged in (authenticated) users with data contexts */
-import ProfilePage from 'components/routers/ProfilePage/ProfilePage';
+import ProfilePage from 'components/Routers/ProfilePage/ProfilePage';
 import Dashboard from 'components/pages/Dashboard/Dashboard';
 import Purchases from 'components/pages/Purchases/Purchases';
 
