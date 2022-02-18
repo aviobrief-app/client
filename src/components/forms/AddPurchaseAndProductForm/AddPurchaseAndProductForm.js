@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useCurrentUserClaims from 'hooks/useCurrentUserClaims';
 import { useYupValidation } from 'hooks/useYupValidation';
@@ -14,9 +14,12 @@ import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
+import ProductPackageDropdownInput from 'components/ProductPackageDropdownInput/ProductPackageDropdownInput';
 
 import * as organizationService from 'services/organizationService';
+import * as productService from 'services/productService';
 
+import Loading from 'components/shared/Loading/Loading';
 import './AddPurchaseAndProductForm.scss';
 const AddPurchaseAndProductForm = () => {
 
@@ -26,6 +29,26 @@ const AddPurchaseAndProductForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { validateForm } = useYupValidation();
     const [claimsAreLoading, currentUserClaims] = useCurrentUserClaims();
+    const [productPackages, setProductPackages] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(() => {
+        if(!!productPackages && !claimsAreLoading) {
+            setIsLoading(false);
+        }
+    }, [productPackages, claimsAreLoading])
+
+    useEffect(() => {
+        productService.getAvailableProductPackages()
+            .then(res => setProductPackages(res))
+            .catch(err => console.error(err))
+    }, [])
+
+
+
+    // console.log(inputValues);
+    // console.log(productPackages);
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -73,7 +96,7 @@ const AddPurchaseAndProductForm = () => {
 
 
     return (
-        !claimsAreLoading && <form className="add-product-form" >
+        !isLoading && <form className="add-product-form" >
             <div className="form-header">
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
@@ -95,6 +118,12 @@ const AddPurchaseAndProductForm = () => {
                                 validations={addProductFormSchema}
                             />
                         </div>
+                    </div>
+                    <div className="package-input">
+                        <ProductPackageDropdownInput
+                            productPackages={productPackages}
+                            publishInputValue={publishInputValue}
+                        />
                     </div>
                     <div className="priority-input">
                         <Label text={'Priority:'} />
