@@ -1,0 +1,17 @@
+.quantity-numeric-input {
+  border: 2px solid #9a2fae;
+  overflow: hidden;
+  border-radius: 4px;
+  .input-box {
+    width: calc(100% - 20px);
+    height: 100%;
+    border: none;
+    padding: 0;
+
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+    color: #9a2fae;
+  }
+}

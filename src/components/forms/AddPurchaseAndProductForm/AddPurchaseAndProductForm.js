@@ -15,6 +15,7 @@ import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceho
 import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
 import ProductPackageDropdownInput from 'components/ProductPackageDropdownInput/ProductPackageDropdownInput';
+import QuantityNumericInput from 'components/inputs/QuantityNumericInput/QuantityNumericInput';
 
 import * as organizationService from 'services/organizationService';
 import * as productService from 'services/productService';
@@ -124,14 +125,23 @@ const AddPurchaseAndProductForm = () => {
                             />
                         </div>
                     </div>
-                    <div className="priority-input">
-                        <Label text={'Priority:'} />
-                        <SelectionSlider
-                            choices={['Now', 'Later']}
-                            publishInputValue={publishInputValue}
-                            inputValues={inputValues}
-                        />
-                    </div>
+                    <section className="priority-and-quantity">
+                        <div className="priority-input">
+                            <Label text={'Priority:'} />
+                            <SelectionSlider
+                                choices={['Now', 'Later']}
+                                publishInputValue={publishInputValue}
+                                inputValues={inputValues}
+                            />
+                        </div>
+                        <div className="quantity-input">
+                            <Label text={'Qty:'} />
+                            <QuantityNumericInput
+                                width='59px'
+                                height='44px'
+                            />
+                        </div>
+                    </section>
                     <div className="exact-input">
                         <CheckboxItem label='exactBrand' publishInputValue={publishInputValue} />
                         <Label className="exact-input-label" text={'Exact brand'} fontSize='18px' />
