@@ -43,8 +43,7 @@ const AddPurchaseAndProductForm = () => {
         productService.getAvailableProductPackages()
             .then(res => setProductPackages(res))
             .catch(err => console.error(err))
-    }, [])
-
+    }, []);
 
 
     console.log(inputValues);
@@ -128,7 +127,7 @@ const AddPurchaseAndProductForm = () => {
                     <div className="priority-input">
                         <Label text={'Priority:'} />
                         <SelectionSlider
-                            choices={['Now', 'Later', 'Archive']}
+                            choices={['Now', 'Later']}
                             publishInputValue={publishInputValue}
                             inputValues={inputValues}
                         />
