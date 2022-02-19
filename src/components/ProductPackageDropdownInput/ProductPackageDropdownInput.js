@@ -1,8 +1,6 @@
-import { useState } from 'react';
-import InputLabel from '@mui/material/InputLabel';
+import { useState, useEffect } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 
 
@@ -13,6 +11,10 @@ const ProductPackageDropdownInput = ({
 }) => {
 
     const [productPackage, setProductPackage] = useState('OTHER');
+
+    useEffect(() => {
+        publishInputValue('productPackage', productPackage);
+    }, [])
 
     const handleChange = (e) => {
         setProductPackage(e.target.value);
