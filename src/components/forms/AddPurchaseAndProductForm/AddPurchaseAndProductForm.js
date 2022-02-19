@@ -4,6 +4,7 @@ import useCurrentUserClaims from 'hooks/useCurrentUserClaims';
 import { useYupValidation } from 'hooks/useYupValidation';
 import { addProductFormSchema } from './validations/addProductFormSchema';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+import { usePurchaseContext } from 'contexts/PurchaseContext';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
 
@@ -17,7 +18,6 @@ import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload
 import ProductPackageDropdownInput from 'components/ProductPackageDropdownInput/ProductPackageDropdownInput';
 import QuantityNumericInput from 'components/inputs/QuantityNumericInput/QuantityNumericInput';
 
-import * as organizationService from 'services/organizationService';
 import * as productService from 'services/productService';
 
 import Loading from 'components/shared/Loading/Loading';
@@ -25,13 +25,16 @@ import './AddPurchaseAndProductForm.scss';
 const AddPurchaseAndProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
+
     const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { validateForm } = useYupValidation();
-    const [claimsAreLoading, currentUserClaims] = useCurrentUserClaims();
-    const [productPackages, setProductPackages] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
+    const [claimsAreLoading] = useCurrentUserClaims();
+    const { addPurchaseAndProduct } = usePurchaseContext();
+    const [productPackages, setProductPackages] = useState(null);
 
 
     useEffect(() => {
@@ -46,8 +49,6 @@ const AddPurchaseAndProductForm = () => {
             .catch(err => console.error(err))
     }, []);
 
-
-    console.log(inputValues);
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -72,7 +73,7 @@ const AddPurchaseAndProductForm = () => {
 
                 setErrors({});
 
-                organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId)
+                addPurchaseAndProduct(inputValues)
                     .then((result) => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
@@ -86,8 +87,8 @@ const AddPurchaseAndProductForm = () => {
                         // console.log(err);
                     });
             })
-            .catch((errors) => {
-                setErrors(errors);
+            .catch((err) => {
+                setErrors(err);
                 toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
                 // loadingUX.dimScreenOut();
             });
@@ -137,8 +138,11 @@ const AddPurchaseAndProductForm = () => {
                         <div className="quantity-input">
                             <Label text={'Qty:'} />
                             <QuantityNumericInput
-                                width='59px'
-                                height='42px'
+                                width={'59px'}
+                                height={'42px'}
+                                minValue={1}
+                                maxValue={10}
+                                publishInputValue={publishInputValue}
                             />
                         </div>
                     </section>

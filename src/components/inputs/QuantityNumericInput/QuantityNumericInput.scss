@@ -5,13 +5,13 @@
   position: relative;
 
   .input-box {
-    width: calc(100% - 20px);
+    width: calc(100% - 5px);
     height: 100%;
     border: none;
     padding: 0;
 
-    text-align: center;
     vertical-align: middle;
+    padding-left: 10px;
     font-size: 18px;
     font-weight: bold;
     color: #9a2fae;
@@ -27,5 +27,10 @@
     position: absolute;
     top: 0px;
     right: 0;
+
+    .increase,
+    .decrease {
+      height: 18.5px;
+    }
   }
 }

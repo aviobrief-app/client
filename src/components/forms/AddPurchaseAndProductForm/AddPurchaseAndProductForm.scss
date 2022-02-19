@@ -70,18 +70,22 @@
       }
     }
   }
-}
 
-.input-container {
-  width: 273px;
-  height: 40px;
-}
-.name-input {
-  position: relative;
+  .input-container {
+    width: 273px;
+    height: 40px;
+  }
+  .name-input {
+    position: relative;
 
-  .package-input {
-    position: absolute;
-    right: 4px;
-    bottom: 0;
+    .package-input {
+      position: absolute;
+      right: 4px;
+      bottom: 0;
+    }
+  }
+
+  .input-ok-message-container {
+    display: none;
   }
 }
