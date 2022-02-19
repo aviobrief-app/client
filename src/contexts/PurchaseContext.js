@@ -45,9 +45,24 @@ export const PurchaseContextProvider = (
             })
     }
 
+    const addPurchaseAndProduct = async (inputValues) => {
+
+        try {
+            const savedPurchase =
+                await organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId);
+
+            setOrgPurchases(orgPurchases => [...orgPurchases, savedPurchase]);
+            return Promise.resolve(savedPurchase);
+        } catch(err) {
+            return Promise.reject(err);
+        }
+
+    }
+
     const globalData = {
         orgPurchases,
         setOrgPurchases,
+        addPurchaseAndProduct,
     }
 
     return (

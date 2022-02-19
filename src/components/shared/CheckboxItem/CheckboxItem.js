@@ -9,11 +9,15 @@ const CheckboxItem = ({
     publishInputValue,
 }) => {
 
-    const [checked, setChecked] = useState(false);
+    const [checked, setChecked] = useState(true);
 
     const onCheckboxClickHandler = (e) => {
         setChecked((checked) => !checked);
     };
+
+    useEffect(() => {
+        publishInputValue(label, checked);
+    }, []);
 
     useEffect(() => {
         publishInputValue(label, checked);

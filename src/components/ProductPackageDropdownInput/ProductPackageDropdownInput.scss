@@ -1,0 +1,24 @@
+.product-package-dropdown-input {
+  .MuiOutlinedInput-root {
+    height: 33px;
+    color: #fff;
+    background-color: #9a2fae;
+    border: none !important;
+    font-size: 14px !important;
+    letter-spacing: 1.5px;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: none;
+  }
+
+  .MuiSelect-select {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: -1px;
+  }
+
+  .MuiSvgIcon-root {
+    color: #fff;
+  }
+}

@@ -9,6 +9,19 @@ import * as toaster from 'utils/notifyingUX/toaster';
 import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
 
 
+export const getAvailableProductPackages = async () => {
+    try {
+        const result = await requester.get(api.getAvailableProductPackages());
+
+        if(result.errors || result.error) { throw (result.message || 'Get available product packages failed!'); }
+
+        return Promise.resolve(result);
+
+    } catch(err) {
+        return Promise.reject(err);
+    }
+}
+
 export const addProduct = async (inputValues) => {
     try {
         await requester.validateOnline();

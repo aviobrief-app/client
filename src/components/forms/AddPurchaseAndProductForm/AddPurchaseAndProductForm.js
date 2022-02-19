@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import useCurrentUserClaims from 'hooks/useCurrentUserClaims';
 import { useYupValidation } from 'hooks/useYupValidation';
 import { addProductFormSchema } from './validations/addProductFormSchema';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
+import { usePurchaseContext } from 'contexts/PurchaseContext';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
 
@@ -14,18 +15,40 @@ import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
+import ProductPackageDropdownInput from 'components/ProductPackageDropdownInput/ProductPackageDropdownInput';
+import QuantityNumericInput from 'components/inputs/QuantityNumericInput/QuantityNumericInput';
 
-import * as organizationService from 'services/organizationService';
+import * as productService from 'services/productService';
 
+import Loading from 'components/shared/Loading/Loading';
 import './AddPurchaseAndProductForm.scss';
 const AddPurchaseAndProductForm = () => {
 
     const { contextSetDisplayModal } = useModalBackdropContext();
+
     const [inputValues, setInputValues] = useState({ priority: 'Now', image: null });
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { validateForm } = useYupValidation();
-    const [claimsAreLoading, currentUserClaims] = useCurrentUserClaims();
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [claimsAreLoading] = useCurrentUserClaims();
+    const { addPurchaseAndProduct } = usePurchaseContext();
+    const [productPackages, setProductPackages] = useState(null);
+
+
+    useEffect(() => {
+        if(!!productPackages && !claimsAreLoading) {
+            setIsLoading(false);
+        }
+    }, [productPackages, claimsAreLoading])
+
+    useEffect(() => {
+        productService.getAvailableProductPackages()
+            .then(res => setProductPackages(res))
+            .catch(err => console.error(err))
+    }, []);
+
 
     const onCloseButtonClick = () => {
         contextSetDisplayModal(false);
@@ -50,7 +73,7 @@ const AddPurchaseAndProductForm = () => {
 
                 setErrors({});
 
-                organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId)
+                addPurchaseAndProduct(inputValues)
                     .then((result) => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
@@ -64,8 +87,8 @@ const AddPurchaseAndProductForm = () => {
                         // console.log(err);
                     });
             })
-            .catch((errors) => {
-                setErrors(errors);
+            .catch((err) => {
+                setErrors(err);
                 toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
                 // loadingUX.dimScreenOut();
             });
@@ -73,7 +96,7 @@ const AddPurchaseAndProductForm = () => {
 
 
     return (
-        !claimsAreLoading && <form className="add-product-form" >
+        !isLoading && <form className="add-product-form" >
             <div className="form-header">
                 <CloseButtonPink onClick={onCloseButtonClick} />
             </div>
@@ -82,6 +105,7 @@ const AddPurchaseAndProductForm = () => {
                     publishInputValue={publishInputValue}
                 />
                 <div className="form-content-middle">
+
                     <div className="name-input">
                         <Label text={'Name:'} />
                         <div className="input-container">
@@ -95,15 +119,33 @@ const AddPurchaseAndProductForm = () => {
                                 validations={addProductFormSchema}
                             />
                         </div>
+                        <div className="package-input">
+                            <ProductPackageDropdownInput
+                                productPackages={productPackages}
+                                publishInputValue={publishInputValue}
+                            />
+                        </div>
                     </div>
-                    <div className="priority-input">
-                        <Label text={'Priority:'} />
-                        <SelectionSlider
-                            choices={['Now', 'Later', 'Archive']}
-                            publishInputValue={publishInputValue}
-                            inputValues={inputValues}
-                        />
-                    </div>
+                    <section className="priority-and-quantity">
+                        <div className="priority-input">
+                            <Label text={'Priority:'} />
+                            <SelectionSlider
+                                choices={['Now', 'Later']}
+                                publishInputValue={publishInputValue}
+                                inputValues={inputValues}
+                            />
+                        </div>
+                        <div className="quantity-input">
+                            <Label text={'Qty:'} />
+                            <QuantityNumericInput
+                                width={'59px'}
+                                height={'42px'}
+                                minValue={1}
+                                maxValue={10}
+                                publishInputValue={publishInputValue}
+                            />
+                        </div>
+                    </section>
                     <div className="exact-input">
                         <CheckboxItem label='exactBrand' publishInputValue={publishInputValue} />
                         <Label className="exact-input-label" text={'Exact brand'} fontSize='18px' />

@@ -18,7 +18,7 @@ const SelectionSlider = ({
                         key={label}
                         publishInputValue={publishInputValue}
                         inputValues={inputValues}
-                        width={'90px'}
+                        width={'85px'}
                         height={'40px'}
                     />)}
         </section>

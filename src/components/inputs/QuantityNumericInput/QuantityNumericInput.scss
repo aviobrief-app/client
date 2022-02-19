@@ -1,0 +1,36 @@
+.quantity-numeric-input {
+  border: 2px solid #9a2fae;
+  border-radius: 4px;
+
+  position: relative;
+
+  .input-box {
+    width: calc(100% - 5px);
+    height: 100%;
+    border: none;
+    padding: 0;
+
+    vertical-align: middle;
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #9a2fae;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 38px;
+
+    position: absolute;
+    top: 0px;
+    right: 0;
+
+    .increase,
+    .decrease {
+      height: 18.5px;
+    }
+  }
+}
