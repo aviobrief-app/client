@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
 
-
+import { ReactComponent as IncreaseButton } from './assets/IncreaseButton.svg';
+import { ReactComponent as DecreaseButton } from './assets/DecreaseButton.svg';
 
 
 import './QuantityNumericInput.scss';
@@ -29,7 +30,8 @@ const QuantityNumericInput = ({
                 value={value}
             />
             <div className="buttons">
-
+                <IncreaseButton />
+                <DecreaseButton />
             </div>
 
         </section>

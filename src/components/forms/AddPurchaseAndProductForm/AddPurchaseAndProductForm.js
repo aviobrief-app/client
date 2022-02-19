@@ -138,7 +138,7 @@ const AddPurchaseAndProductForm = () => {
                             <Label text={'Qty:'} />
                             <QuantityNumericInput
                                 width='59px'
-                                height='44px'
+                                height='42px'
                             />
                         </div>
                     </section>
