@@ -13,7 +13,13 @@ const PurchaseCard = ({
 
     return (
         <section className="purchase-card">
+            {purchase.bought
+                ? <div className="purchase-bought-dimmer">
 
+                </div>
+
+                : null
+            }
             <section className="left-section">
                 <PictureElement
                     size={'70px'}

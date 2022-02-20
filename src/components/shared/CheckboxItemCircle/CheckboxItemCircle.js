@@ -18,13 +18,11 @@ const CheckboxItemCircle = ({
 
     const buyPurchaseHandler = () => {
         buyPurchase(purchaseId)
-            .then(() => toaster.toastSuccess(toastMessages.PURCHASE_BUY_OK))
             .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_BUY_FAIL))
     }
 
     const unBuyPurchaseHandler = () => {
         unBuyPurchase(purchaseId)
-            .then(() => toaster.toastSuccess(toastMessages.PURCHASE_UN_BUY_OK))
             .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_UN_BUY_FAIL))
     }
 
