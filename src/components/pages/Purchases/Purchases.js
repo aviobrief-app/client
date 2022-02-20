@@ -12,8 +12,6 @@ import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
 import AddPurchaseAndProductForm from 'components/forms/AddPurchaseAndProductForm/AddPurchaseAndProductForm';
 import PurchaseCard from 'components/PurchaseCard/PurchaseCard';
 
-import * as organizationService from 'services/organizationService';
-
 import Loading from 'components/shared/Loading/Loading';
 import './Purchases.scss';
 const Purchases = () => {
@@ -21,8 +19,6 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
-    console.log(orgPurchases);
-
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
