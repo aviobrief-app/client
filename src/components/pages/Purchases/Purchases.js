@@ -61,7 +61,7 @@ const Purchases = () => {
                         .map(purchase =>
                             <PurchaseCard
                                 key={purchase._id}
-                                priority={purchase.priority}
+                                purchase={purchase}
                                 product={purchase.product}
                             />)
                     : <Loading />}
