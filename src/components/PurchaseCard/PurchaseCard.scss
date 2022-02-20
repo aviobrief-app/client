@@ -23,5 +23,15 @@
       font-weight: bold;
       text-transform: capitalize;
     }
+
+    .quantity-info {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+
+      .package {
+        margin-left: 5px;
+      }
+    }
   }
 }
