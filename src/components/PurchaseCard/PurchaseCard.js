@@ -42,13 +42,19 @@ const PurchaseCard = ({
                             backgroundColor={'#fff'}
                             fontSize={'14px'}
                         />
+
+
                     }
 
                 </section>
             </section>
 
             <section className="right-section">
-                <CheckboxItemCircle />
+                <CheckboxItemCircle
+                    isBought={purchase.bought}
+                    purchaseId={purchase._id}
+                />
+
             </section>
         </section>
     )

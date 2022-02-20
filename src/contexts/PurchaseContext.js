@@ -59,10 +59,48 @@ export const PurchaseContextProvider = (
 
     }
 
+    const buyPurchase = async (purchaseId) => {
+
+        try {
+
+            setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
+                if(p._id === purchaseId) {
+                    p.bought = true;
+                }
+                return p;
+            })])
+
+            return Promise.resolve(purchaseId);
+
+        } catch(err) {
+            return Promise.reject(err);
+        }
+    }
+
+    const unBuyPurchase = async (purchaseId) => {
+
+        try {
+
+            setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
+                if(p._id === purchaseId) {
+                    p.bought = false;
+                }
+                return p;
+            })])
+
+            return Promise.resolve(purchaseId);
+
+        } catch(err) {
+            return Promise.reject(err);
+        }
+    }
+
     const globalData = {
         orgPurchases,
         setOrgPurchases,
         addPurchaseAndProduct,
+        buyPurchase,
+        unBuyPurchase,
     }
 
     return (
