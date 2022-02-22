@@ -62,12 +62,10 @@ export const PurchaseContextProvider = (
     }
 
     const buyPurchase = async (purchaseId) => {
-        console.log(purchaseId);
-        console.log(currentUserClaims.organizationId);
 
         try {
 
-            purchaseService.buyOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
+            await purchaseService.buyOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
 
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
@@ -83,9 +81,10 @@ export const PurchaseContextProvider = (
         }
     }
 
-    const unBuyPurchase = async (purchaseId) => {
+    const rejectBoughtPurchase = async (purchaseId) => {
 
         try {
+            await purchaseService.rejectOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
 
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
@@ -106,7 +105,7 @@ export const PurchaseContextProvider = (
         setOrgPurchases,
         addPurchaseAndProduct,
         buyPurchase,
-        unBuyPurchase,
+        rejectBoughtPurchase,
     }
 
     return (

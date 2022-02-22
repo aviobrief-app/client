@@ -14,15 +14,15 @@ const CheckboxItemCircle = ({
     isBought,
 }) => {
 
-    const { buyPurchase, unBuyPurchase } = usePurchaseContext();
+    const { buyPurchase, rejectBoughtPurchase } = usePurchaseContext();
 
     const buyPurchaseHandler = () => {
         buyPurchase(purchaseId)
             .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_BUY_FAIL))
     }
 
-    const unBuyPurchaseHandler = () => {
-        unBuyPurchase(purchaseId)
+    const rejectBoughtPurchaseHandler = () => {
+        rejectBoughtPurchase(purchaseId)
             .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_UN_BUY_FAIL))
     }
 
@@ -30,7 +30,7 @@ const CheckboxItemCircle = ({
         <section className="checkbox-item-circle" >
             {isBought
                 ?
-                <CheckboxSelected onClick={unBuyPurchaseHandler} />
+                <CheckboxSelected onClick={rejectBoughtPurchaseHandler} />
                 :
                 <CheckboxNotSelected onClick={buyPurchaseHandler} />
             }

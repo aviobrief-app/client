@@ -31,6 +31,7 @@ ReactDOM.render(
       draggable
       pauseOnHover
     />
+    <div id="loading-ux-container"></div>
   </React.StrictMode>,
   document.getElementById('root')
 );

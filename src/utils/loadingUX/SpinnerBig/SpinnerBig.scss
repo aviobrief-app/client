@@ -1,0 +1,19 @@
+.spinner-big {
+    border: 10px solid rgba(255, 255, 255, 0); /* Light grey */
+    border-top: 10px solid #0051ff; /* Blue */
+    border-right: 10px solid #0051ff; /* Blue */
+    border-bottom: 10px solid #0051ff; /* Blue */
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 1.8s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
