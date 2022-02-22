@@ -16,6 +16,7 @@ import Purchases from 'components/pages/Purchases/Purchases';
 /* HOC */
 import withNavbar from 'components/hoc/withNavbar';
 import withPurchaseContext from 'components/hoc/withPurchaseContext';
+import withAuthContext from 'components/hoc/withAuthContext';
 
 import './App.css';
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register-organization-owner" element={<RegisterOrganizationOwner />} />
 
-        <Route path="/profile" element={withPurchaseContext(withNavbar(ProfilePage))}>
+        <Route path="/profile" element={withAuthContext(withPurchaseContext(withNavbar(ProfilePage)))}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="purchases" element={<Purchases />} />
         </Route>
