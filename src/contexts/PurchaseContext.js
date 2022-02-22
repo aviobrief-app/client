@@ -8,6 +8,8 @@ import * as logger from 'utils/notifyingUX/logger';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
 
+import * as purchaseService from 'services/purchaseService';
+
 const PurchaseContext = React.createContext();
 export const usePurchaseContext = () => { return useContext(PurchaseContext) };
 
@@ -59,10 +61,52 @@ export const PurchaseContextProvider = (
 
     }
 
+    const buyPurchase = async (purchaseId) => {
+        console.log(purchaseId);
+        console.log(currentUserClaims.organizationId);
+
+        try {
+
+            purchaseService.buyOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
+
+            setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
+                if(p._id === purchaseId) {
+                    p.bought = true;
+                }
+                return p;
+            })])
+
+            return Promise.resolve(purchaseId);
+
+        } catch(err) {
+            return Promise.reject(err);
+        }
+    }
+
+    const unBuyPurchase = async (purchaseId) => {
+
+        try {
+
+            setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
+                if(p._id === purchaseId) {
+                    p.bought = false;
+                }
+                return p;
+            })])
+
+            return Promise.resolve(purchaseId);
+
+        } catch(err) {
+            return Promise.reject(err);
+        }
+    }
+
     const globalData = {
         orgPurchases,
         setOrgPurchases,
         addPurchaseAndProduct,
+        buyPurchase,
+        unBuyPurchase,
     }
 
     return (

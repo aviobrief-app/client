@@ -21,6 +21,7 @@ export const getAvailableProductPackages = () => `${springBaseUrl}/api/products/
 /* organization related*/
 export const organizationPurchases = (organizationId) => `${springBaseUrl}/api/organizations/${organizationId}/purchases`;
 export const organizationProducts = (organizationId) => `${springBaseUrl}/api/organizations/${organizationId}/products`;
+export const buyOrganizationPurchase = (organizationId, purchaseId) => `${springBaseUrl}/api/organizations/${organizationId}/purchases/${purchaseId}/?action=buy`;
 
 
 

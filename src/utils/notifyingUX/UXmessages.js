@@ -62,7 +62,12 @@ export const toastMessages = {
     PRODUCT_ADD_OK: 'Product add successful!',
     PRODUCT_ADD_FAIL: 'Product add fail!',
 
-    //Purchase Context
+    //Purchase Context, purchase
     ORG_PURCHASE_DATA_LOAD_FAIL: `Purchases load failed!`,
+    PURCHASE_BUY_OK: 'Purchase bought!',
+    PURCHASE_BUY_FAIL: 'Buy purchase failed!',
+    PURCHASE_UN_BUY_OK: 'Purchase canceled!',
+    PURCHASE_UN_BUY_FAIL: 'Could not cancel purchase!',
+
 
 }
