@@ -39,7 +39,7 @@ export const PurchaseContextProvider = (
     const refreshDataFromDB = () => {
         fetchPurchaseDataByRole(currentUserClaims)
             .then(([orgPurchases]) => {
-                setOrgPurchases(orgPurchases);
+                setOrgPurchases(() => orgPurchases.map(p => ({ ...p, toDisplay: !p.bought })));
                 loadingUX.dimScreenOut();
 
             })
@@ -66,6 +66,7 @@ export const PurchaseContextProvider = (
 
     }
 
+
     const buyPurchase = async (purchaseId) => {
 
         try {
@@ -75,6 +76,13 @@ export const PurchaseContextProvider = (
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
                     p.bought = true;
+
+                    setTimeout(() => {
+                        if(p.bought) {
+                            p.toDisplay = false;
+                            setOrgPurchases(() => orgPurchases);
+                        }
+                    }, 1800000)
                 }
                 return p;
             })])
@@ -94,6 +102,7 @@ export const PurchaseContextProvider = (
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
                     p.bought = false;
+                    p.toDisplay = true;
                 }
                 return p;
             })])

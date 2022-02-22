@@ -8,7 +8,6 @@ import './PurchaseCard.scss';
 const PurchaseCard = ({
     purchase,
     product,
-
 }) => {
 
     return (
