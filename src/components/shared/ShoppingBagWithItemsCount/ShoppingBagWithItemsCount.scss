@@ -1,0 +1,15 @@
+.shopping-bag-with-items-count {
+  position: relative;
+
+  .shopping-bag-red-circle {
+    position: absolute;
+    top: 0;
+    right: -12px;
+  }
+
+  .shopping-bag-green-circle {
+    position: absolute;
+    top: 22px;
+    right: -14px;
+  }
+}
