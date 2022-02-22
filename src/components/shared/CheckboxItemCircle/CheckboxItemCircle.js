@@ -7,6 +7,7 @@ import { ReactComponent as CheckboxNotSelected } from './assets/CheckboxNotSelec
 
 import * as toaster from 'utils/notifyingUX/toaster';
 import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
 
 import './CheckboxItemCircle.scss';
 const CheckboxItemCircle = ({
@@ -14,23 +15,33 @@ const CheckboxItemCircle = ({
     isBought,
 }) => {
 
-    const { buyPurchase, unBuyPurchase } = usePurchaseContext();
+    const { buyPurchase, rejectBoughtPurchase } = usePurchaseContext();
 
     const buyPurchaseHandler = () => {
+        loadingUX.dimScreenIn();
         buyPurchase(purchaseId)
-            .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_BUY_FAIL))
+            .then(() => loadingUX.dimScreenOut())
+            .catch(() => {
+                loadingUX.dimScreenOut();
+                toaster.toastSuccess(toastMessages.PURCHASE_BUY_FAIL);
+            })
     }
 
-    const unBuyPurchaseHandler = () => {
-        unBuyPurchase(purchaseId)
-            .catch(() => toaster.toastSuccess(toastMessages.PURCHASE_UN_BUY_FAIL))
+    const rejectBoughtPurchaseHandler = () => {
+        loadingUX.dimScreenIn();
+        rejectBoughtPurchase(purchaseId)
+            .then(() => loadingUX.dimScreenOut())
+            .catch(() => {
+                loadingUX.dimScreenOut();
+                toaster.toastSuccess(toastMessages.PURCHASE_REJECT_FAIL);
+            })
     }
 
     return (
         <section className="checkbox-item-circle" >
             {isBought
                 ?
-                <CheckboxSelected onClick={unBuyPurchaseHandler} />
+                <CheckboxSelected onClick={rejectBoughtPurchaseHandler} />
                 :
                 <CheckboxNotSelected onClick={buyPurchaseHandler} />
             }

@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
 
 import AddProductButton from 'components/AddProductButton/AddProductButton';
 
@@ -11,6 +13,10 @@ const Dashboard = () => {
         e.preventDefault();
         navigate('/profile/purchases')
     }
+
+    useEffect(() => {
+        navigate('/profile/purchases')
+    }, [])
 
     return (
         <section className="dashboard">

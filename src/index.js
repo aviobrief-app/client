@@ -7,18 +7,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthContextProvider } from 'contexts/AuthContext';
 import { ModalBackdropContextProvider } from 'contexts/ModalBackdropContext';
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <AuthContextProvider>
-        <ModalBackdropContextProvider>
-          <App />
-        </ModalBackdropContextProvider>
-      </AuthContextProvider>
+      <ModalBackdropContextProvider>
+        <App />
+      </ModalBackdropContextProvider>
     </Router>
     <ToastContainer
       transition={Slide}
@@ -31,6 +28,7 @@ ReactDOM.render(
       draggable
       pauseOnHover
     />
+    <div id="loading-ux-container"></div>
   </React.StrictMode>,
   document.getElementById('root')
 );

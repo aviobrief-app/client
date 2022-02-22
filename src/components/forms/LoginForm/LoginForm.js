@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useYupValidation } from 'hooks/useYupValidation';
-import { loginFormSchema } from './validations/loginFormSchema';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
+
+
+import { useYupValidation } from 'hooks/useYupValidation';
+import { loginFormSchema } from './validations/loginFormSchema';
 import * as authService from 'services/authService';
 import { useAuth } from 'contexts/AuthContext';
 
@@ -21,7 +24,7 @@ const LoginForm = () => {
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { setCurrentUser, setCurrentUserClaims } = useAuth();
+    // const { setCurrentUser, setCurrentUserClaims } = useAuth();
 
     const publishInputValue = (inputName, value) => {
         setInputValues((inputValues) => ({
@@ -32,6 +35,7 @@ const LoginForm = () => {
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
+        loadingUX.dimScreenIn();
         setIsLoading(true);
 
 
@@ -42,8 +46,10 @@ const LoginForm = () => {
                 authService
                     .loginJWT(inputValues)
                     .then((loginResponse) => {
-                        setCurrentUser(loginResponse.currentUser);
-                        setCurrentUserClaims(loginResponse.currentUserClaims);
+                        // setCurrentUser(loginResponse.currentUser);
+                        // setCurrentUserClaims(loginResponse.currentUserClaims);
+                        sessionStorage.setItem('USER', JSON.stringify(loginResponse.currentUser));
+                        sessionStorage.setItem('USER_CLAIMS', JSON.stringify(loginResponse.currentUserClaims));
                         toaster.toastSuccess(toastMessages.LOGIN_OK);
                         setIsSubmitted(true);
                         navigate('/profile/dashboard');
@@ -64,6 +70,7 @@ const LoginForm = () => {
             });
 
         setIsLoading(false);
+        loadingUX.dimScreenOut();
 
     }
 

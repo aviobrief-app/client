@@ -7,6 +7,7 @@ import * as organizationService from 'services/organizationService';
 import * as logger from 'utils/notifyingUX/logger';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
 
 import * as purchaseService from 'services/purchaseService';
 
@@ -38,12 +39,16 @@ export const PurchaseContextProvider = (
     const refreshDataFromDB = () => {
         fetchPurchaseDataByRole(currentUserClaims)
             .then(([orgPurchases]) => {
-                setOrgPurchases(orgPurchases);
+                setOrgPurchases(() => orgPurchases.map(p => ({ ...p, toDisplay: !p.bought })));
+                loadingUX.dimScreenOut();
+
             })
             .catch((err) => {
                 // console.log(err);
                 logger.logWarning(consoleMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
                 toaster.toastWarning(toastMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
+                loadingUX.dimScreenOut();
+
             })
     }
 
@@ -52,8 +57,8 @@ export const PurchaseContextProvider = (
         try {
             const savedPurchase =
                 await organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId);
-
             setOrgPurchases(orgPurchases => [...orgPurchases, savedPurchase]);
+
             return Promise.resolve(savedPurchase);
         } catch(err) {
             return Promise.reject(err);
@@ -61,17 +66,23 @@ export const PurchaseContextProvider = (
 
     }
 
+
     const buyPurchase = async (purchaseId) => {
-        console.log(purchaseId);
-        console.log(currentUserClaims.organizationId);
 
         try {
 
-            purchaseService.buyOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
+            await purchaseService.buyOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
 
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
                     p.bought = true;
+
+                    setTimeout(() => {
+                        if(p.bought) {
+                            p.toDisplay = false;
+                            setOrgPurchases(() => orgPurchases);
+                        }
+                    }, 1800000)
                 }
                 return p;
             })])
@@ -83,13 +94,15 @@ export const PurchaseContextProvider = (
         }
     }
 
-    const unBuyPurchase = async (purchaseId) => {
+    const rejectBoughtPurchase = async (purchaseId) => {
 
         try {
+            await purchaseService.rejectOrganizationPurchase(currentUserClaims.organizationId, purchaseId);
 
             setOrgPurchases(orgPurchases => [...orgPurchases.map(p => {
                 if(p._id === purchaseId) {
                     p.bought = false;
+                    p.toDisplay = true;
                 }
                 return p;
             })])
@@ -106,7 +119,7 @@ export const PurchaseContextProvider = (
         setOrgPurchases,
         addPurchaseAndProduct,
         buyPurchase,
-        unBuyPurchase,
+        rejectBoughtPurchase,
     }
 
     return (

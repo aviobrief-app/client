@@ -1,0 +1,19 @@
+.green-purchases-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #21c097;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .green-circe {
+    margin-top: 0.7px;
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+  }
+}

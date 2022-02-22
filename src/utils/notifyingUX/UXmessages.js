@@ -66,8 +66,8 @@ export const toastMessages = {
     ORG_PURCHASE_DATA_LOAD_FAIL: `Purchases load failed!`,
     PURCHASE_BUY_OK: 'Purchase bought!',
     PURCHASE_BUY_FAIL: 'Buy purchase failed!',
-    PURCHASE_UN_BUY_OK: 'Purchase canceled!',
-    PURCHASE_UN_BUY_FAIL: 'Could not cancel purchase!',
+    PURCHASE_REJECT_OK: 'Purchase canceled!',
+    PURCHASE_REJECT_FAIL: 'Could not cancel purchase!',
 
 
 }

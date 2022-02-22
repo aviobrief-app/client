@@ -19,12 +19,12 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
+    console.log(orgPurchases);
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
         contextSetDisplayModal(true);
     }
-
 
     return (
         <section className="purchases">
@@ -55,7 +55,7 @@ const Purchases = () => {
                 {orgPurchases
                     ? orgPurchases
                         .map(purchase =>
-                            <PurchaseCard
+                            purchase.toDisplay && <PurchaseCard
                                 key={purchase._id}
                                 purchase={purchase}
                                 product={purchase.product}
