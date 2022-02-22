@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { useYupValidation } from 'hooks/useYupValidation';
-import { loginFormSchema } from './validations/loginFormSchema';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
+
+
+import { useYupValidation } from 'hooks/useYupValidation';
+import { loginFormSchema } from './validations/loginFormSchema';
 import * as authService from 'services/authService';
 import { useAuth } from 'contexts/AuthContext';
 
@@ -32,6 +35,7 @@ const LoginForm = () => {
 
     const onFormSubmitHandler = async (e) => {
         e.preventDefault();
+        loadingUX.dimScreenIn();
         setIsLoading(true);
 
 
@@ -64,6 +68,7 @@ const LoginForm = () => {
             });
 
         setIsLoading(false);
+        loadingUX.dimScreenOut();
 
     }
 

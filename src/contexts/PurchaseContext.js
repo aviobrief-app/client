@@ -7,6 +7,7 @@ import * as organizationService from 'services/organizationService';
 import * as logger from 'utils/notifyingUX/logger';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { consoleMessages, toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
 
 import * as purchaseService from 'services/purchaseService';
 
@@ -39,11 +40,15 @@ export const PurchaseContextProvider = (
         fetchPurchaseDataByRole(currentUserClaims)
             .then(([orgPurchases]) => {
                 setOrgPurchases(orgPurchases);
+                loadingUX.dimScreenOut();
+
             })
             .catch((err) => {
                 // console.log(err);
                 logger.logWarning(consoleMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
                 toaster.toastWarning(toastMessages.ORG_PURCHASE_DATA_LOAD_FAIL);
+                loadingUX.dimScreenOut();
+
             })
     }
 
