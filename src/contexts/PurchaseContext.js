@@ -55,10 +55,10 @@ export const PurchaseContextProvider = (
     const addPurchaseAndProduct = async (inputValues) => {
 
         try {
-            const savedPurchase =
-                await organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId);
-            setOrgPurchases(orgPurchases => [...orgPurchases, savedPurchase]);
+            const savedPurchase = await organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId);
+            savedPurchase.toDisplay = true;
 
+            setOrgPurchases(orgPurchases => [...orgPurchases, savedPurchase]);
             return Promise.resolve(savedPurchase);
         } catch(err) {
             return Promise.reject(err);
@@ -82,7 +82,7 @@ export const PurchaseContextProvider = (
                             p.toDisplay = false;
                             setOrgPurchases(() => orgPurchases);
                         }
-                    }, 1800000)
+                    }, 3600000)
                 }
                 return p;
             })])
