@@ -7,6 +7,8 @@ import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 import { usePurchaseContext } from 'contexts/PurchaseContext';
 import * as toaster from 'utils/notifyingUX/toaster';
 import { toastMessages } from 'utils/notifyingUX/UXmessages';
+import * as loadingUX from 'utils/loadingUX/loadingUX';
+
 
 import { ReactComponent as CloseButtonPink } from 'assets/svg/CloseButtonPink.svg';
 import ButtonFilled from 'components/shared/ButtonFilled/ButtonFilled';
@@ -64,6 +66,7 @@ const AddPurchaseAndProductForm = () => {
 
     const onAddProductClick = (e) => {
         e.preventDefault();
+        loadingUX.dimScreenIn();
 
         validateForm(addProductFormSchema, inputValues)
             .then(() => {
@@ -78,20 +81,22 @@ const AddPurchaseAndProductForm = () => {
                         setIsSubmitted(true);
                         toaster.toastSuccess(toastMessages.PRODUCT_ADD_OK);
                         contextSetDisplayModal(false);
+                        loadingUX.dimScreenInOut();
                     })
                     .catch(err => {
                         err.message
                             ? toaster.toastWarning(err.message)
                             : toaster.toastWarning(toastMessages.PRODUCT_ADD_FAIL)
-                        // loadingUX.dimScreenOut();
+                        loadingUX.dimScreenOut();
                         // console.log(err);
                     });
             })
             .catch((err) => {
                 setErrors(err);
                 toaster.toastWarning(toastMessages.MISSING_REQUIRED_FORM_DATA);
-                // loadingUX.dimScreenOut();
+                loadingUX.dimScreenOut();
             });
+
     }
 
 

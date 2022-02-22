@@ -14,6 +14,10 @@ const Dashboard = () => {
         navigate('/profile/purchases')
     }
 
+    useEffect(() => {
+        navigate('/profile/purchases')
+    }, [])
+
     return (
         <section className="dashboard">
             <section className="add-button" onClick={onAddProductButtonClick}>

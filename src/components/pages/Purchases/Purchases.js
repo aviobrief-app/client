@@ -19,11 +19,16 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
+    const [latestPurchases, setLatestPurchases] = useState(null);
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
         contextSetDisplayModal(true);
     }
+
+    useEffect(() => {
+        console.log(orgPurchases);
+    }, [orgPurchases])
 
 
     return (

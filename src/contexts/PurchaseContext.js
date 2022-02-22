@@ -57,8 +57,8 @@ export const PurchaseContextProvider = (
         try {
             const savedPurchase =
                 await organizationService.addPurchaseToOrganization(inputValues, currentUserClaims.organizationId);
-
             setOrgPurchases(orgPurchases => [...orgPurchases, savedPurchase]);
+
             return Promise.resolve(savedPurchase);
         } catch(err) {
             return Promise.reject(err);
