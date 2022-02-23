@@ -18,6 +18,11 @@ export const getAllUsers = () => `${springBaseUrl}/users`;
 export const addProduct = () => `${springBaseUrl}/api/products`;
 export const getAvailableProductPackages = () => `${springBaseUrl}/api/products/packages`;
 
+/* store related*/
+export const getAvailableStores = () => `${springBaseUrl}/api/stores`;
+
+
+
 /* organization related*/
 export const organizationPurchases = (organizationId) => `${springBaseUrl}/api/organizations/${organizationId}/purchases`;
 export const organizationProducts = (organizationId) => `${springBaseUrl}/api/organizations/${organizationId}/products`;
