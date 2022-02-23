@@ -112,7 +112,7 @@ const AddPurchaseAndProductForm = () => {
                 <div className="form-content-middle">
 
                     <div className="name-input">
-                        <Label text={'Name:'} />
+                        <Label text={'Name/Package:'} />
                         <div className="input-container">
                             <InputWithCustomPlaceholder
                                 name="productName"

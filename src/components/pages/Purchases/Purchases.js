@@ -19,7 +19,6 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
-    console.log(orgPurchases);
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
