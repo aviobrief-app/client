@@ -2,8 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 60px;
 
-  .add-button {
+  .card-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .bottom-menu {
+    position: absolute;
+    right: 1px;
+    bottom: -3px;
   }
 }

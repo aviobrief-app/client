@@ -12,6 +12,10 @@ import ModalBackdrop from 'components/hoc/ModalBackdrop/ModalBackdrop';
 import AddPurchaseAndProductForm from 'components/forms/AddPurchaseAndProductForm/AddPurchaseAndProductForm';
 import PurchaseCard from 'components/PurchaseCard/PurchaseCard';
 
+//temp svg
+import { ReactComponent as BottomMenu } from './assets/BottomMenu.svg';
+
+
 import Loading from 'components/shared/Loading/Loading';
 import './Purchases.scss';
 const Purchases = () => {
@@ -68,6 +72,9 @@ const Purchases = () => {
                 </ModalBackdrop>
             }
 
+            <div className="bottom-menu">
+                <BottomMenu />
+            </div>
         </section>
     )
 

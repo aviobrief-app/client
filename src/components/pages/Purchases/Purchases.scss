@@ -54,5 +54,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 95%;
+  width: 97%;
+  height: 60vh;
+  overflow-y: scroll;
+  box-shadow: inset 0px -5px 3px #0000001f;
+  padding-bottom: 10px;
+}
+
+.bottom-menu {
+  position: absolute;
+  right: 1px;
+  bottom: -3px;
 }
