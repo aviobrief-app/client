@@ -1,0 +1,31 @@
+.dashboard-card {
+  width: 180px;
+  height: 180px;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  .card-background {
+    position: absolute;
+  }
+
+  .inner-component-container {
+    pointer-events: none;
+    margin-top: -10px;
+  }
+
+  .card-label {
+    position: absolute;
+    bottom: 25px;
+    color: #fff;
+    // font-family: "SansSerif", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: 2px;
+    pointer-events: none;
+  }
+}
