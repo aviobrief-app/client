@@ -1,14 +1,43 @@
-
+import { useState } from 'react';
 import PictureElement from 'components/shared/PictureElement/PictureElement';
 import ColoredTag from 'components/shared/ColoredTag/ColoredTag';
 import CheckboxItemCircle from 'components/shared/CheckboxItemCircle/CheckboxItemCircle';
 import { getPackageDisplayName } from './helper/getPackageDisplayName';
+
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+
 
 import './PurchaseCard.scss';
 const PurchaseCard = ({
     purchase,
     product,
 }) => {
+
+    const [open, setOpen] = useState(false);
+
+    const handleClose = () => setOpen(false);
+    const onProductPictureClick = () => {
+        setOpen(true)
+    };
+
+    const PictureDialog = (props) => {
+        const { onClose, selectedValue, open } = props;
+
+        const handleClose = () => {
+            onClose(selectedValue);
+        };
+
+        return (
+            <Dialog onClose={handleClose} open={open}>
+                <div className="product-picture-big">
+                    <img src={product.image} alt="" />
+                </div>
+            </Dialog>
+        );
+
+
+    }
 
     return (
         <section className="purchase-card">
@@ -25,6 +54,11 @@ const PurchaseCard = ({
                     isArchived={false}
                     priority={purchase.priority}
                     imageUrl={product.image}
+                    onClick={onProductPictureClick}
+                />
+                <PictureDialog
+                    open={open}
+                    onClose={handleClose}
                 />
                 <section className="purchase-product-info">
                     <div className="name">{product.productName}</div>
