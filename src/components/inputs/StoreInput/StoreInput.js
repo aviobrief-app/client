@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 
+import * as storeService from 'services/storeService';
 
 import './StoreInput.scss';
 const StoreInput = ({
@@ -21,11 +22,20 @@ const StoreInput = ({
     const [dialogValue, setDialogValue] = useState({ label: '' });
     const [open, toggleOpen] = useState(false);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         setValue({ label: dialogValue.label });
 
-        setOptions(options => [...options, { label: dialogValue.label }])
+        const isExisting = options.some((option) => dialogValue.label.toLowerCase() === option.label.toLowerCase());
+        if(!isExisting) {
+            setOptions(options => [...options, { label: dialogValue.label }]);
+            publishInputValue('store', dialogValue.label);
+
+            try {
+                await storeService.addStore({ name: dialogValue.label });
+            } catch(err) { console.log(err) }
+        }
+
         handleClose();
     };
 
@@ -44,22 +54,21 @@ const StoreInput = ({
                         // timeout to avoid instant validation of the dialog's form.
                         setTimeout(() => {
                             toggleOpen(true);
-                            setDialogValue({
-                                label: newValue,
-                                year: '',
-                            });
+                            setDialogValue({ label: newValue, });
                         });
                     } else if(newValue && newValue.inputValue) {
                         toggleOpen(true);
                         setDialogValue({ label: newValue.inputValue });
                     } else {
                         setValue(newValue);
+                        publishInputValue('store', newValue.label)
                     }
+
                 }}
                 filterOptions={(options, params) => {
                     const filtered = filter(options, params);
 
-                    const isExisting = options.some((option) => params.inputValue === option.label);
+                    const isExisting = options.some((option) => params.inputValue.toLowerCase() === option.label.toLowerCase());
                     if(params.inputValue !== '' && !isExisting) {
                         filtered.push({
                             inputValue: params.inputValue,
@@ -91,9 +100,15 @@ const StoreInput = ({
                 sx={{ width: 273 }}
                 freeSolo
                 renderInput={(params) => (
-                    <TextField {...params} label="Store" />
+                    <TextField
+                        {...params}
+                        // label="Store"
+                        // InputLabelProps={{ shrink: false }}
+                        placeholder="ex: Billa"
+                    />
                 )}
                 size={"small"}
+
             />
 
             <Dialog open={open} onClose={handleClose}>

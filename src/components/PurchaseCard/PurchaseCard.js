@@ -34,22 +34,41 @@ const PurchaseCard = ({
                             {getPackageDisplayName(product.productPackage, purchase.quantity)}
                         </p>
                     </div>
-                    {purchase.exactBrand
-                        ?
-                        <ColoredTag
-                            text={'EXACT'}
-                            backgroundColor={'#E2208A'}
-                            fontSize={'14px'}
-                        />
-                        :
-                        <ColoredTag
-                            text={'EMPTY'}
-                            backgroundColor={'#fff'}
-                            fontSize={'14px'}
-                        />
+                    <section className="labels-row">
+                        <div className="store">
+                            {(!purchase.store || purchase.store.name === '' || purchase.store.name === 'ANY STORE')
+                                ? <ColoredTag
+                                    text={'всички'}
+                                    backgroundColor={'#21C097'}
+                                    fontSize={'14px'}
+                                />
+                                : <ColoredTag
+                                    className="store-name"
+                                    text={purchase.store.name}
+                                    backgroundColor={'#FD9727'}
+                                    fontSize={'14px'}
+
+                                />
+                            }
+                        </div>
+                        <div className="exact">
+                            {purchase.exactBrand
+                                ? <ColoredTag
+                                    text={'EXACT'}
+                                    backgroundColor={'#E2208A'}
+                                    fontSize={'14px'}
+                                />
+                                : <ColoredTag
+                                    text={'EMPTY'}
+                                    backgroundColor={'#fff'}
+                                    fontSize={'14px'}
+                                />
+                            }
+                        </div>
 
 
-                    }
+                    </section>
+
 
                 </section>
             </section>

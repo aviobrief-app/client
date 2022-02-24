@@ -15,8 +15,8 @@ export const addProductFormSchema = yup.object().shape({
     exactBrand: yup
         .boolean()
         .oneOf([true, false], 'Exact or Not_Exact required!'),
-    store: yup
-        .string()
-        .min(3, `Store name min 3 characters!`),
+    // store: yup
+    //     .string()
+    //     .min(3, `Store name min 3 characters!`),
 
 });

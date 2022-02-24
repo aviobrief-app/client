@@ -47,7 +47,7 @@ const AddPurchaseAndProductForm = () => {
 
     useEffect(() => {
         storeService.getAvailableStores()
-            .then(res => setStores(res))
+            .then(res => setStores(() => res.map(store => ({ label: store.name }))))
             .catch(err => console.error(err))
     }, []);
 
@@ -98,7 +98,6 @@ const AddPurchaseAndProductForm = () => {
             });
 
     }
-
 
     return (
         !isLoading && <form className="add-product-form" >

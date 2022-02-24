@@ -50,6 +50,19 @@
           margin-left: 5px;
         }
       }
+
+      .labels-row {
+        display: flex;
+        align-items: center;
+
+        .store {
+          margin-right: 10px;
+          .store-name {
+            text-transform: capitalize;
+            letter-spacing: 1.5px;
+          }
+        }
+      }
     }
   }
 

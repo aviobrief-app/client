@@ -20,6 +20,7 @@ export const getAvailableProductPackages = () => `${springBaseUrl}/api/products/
 
 /* store related*/
 export const getAvailableStores = () => `${springBaseUrl}/api/stores`;
+export const addStore = () => `${springBaseUrl}/api/stores`;
 
 
 
