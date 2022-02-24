@@ -6,10 +6,11 @@ const ColoredTag = ({
     text,
     backgroundColor,
     fontSize,
+    className,
 }) => {
     const style = { backgroundColor: backgroundColor, fontSize: fontSize };
     return (
-        <div className="colored-tag" style={style}>
+        <div className={`colored-tag ${className}`} style={style}>
             <p>{text}</p>
         </div>
     )

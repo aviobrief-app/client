@@ -50,7 +50,7 @@ const QuantityNumericInput = ({
             />
             <div className="buttons">
                 <IncreaseButton className="increase" onClick={onIncreaseButtonClick} />
-                <DecreaseButton className="increase" onClick={onDecreaseButtonClick} />
+                <DecreaseButton className="decrease" onClick={onDecreaseButtonClick} />
             </div>
 
         </section>

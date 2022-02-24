@@ -66,7 +66,6 @@ export const PurchaseContextProvider = (
 
     }
 
-
     const buyPurchase = async (purchaseId) => {
 
         try {

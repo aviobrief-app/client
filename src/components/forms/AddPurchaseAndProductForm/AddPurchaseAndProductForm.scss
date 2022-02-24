@@ -1,6 +1,6 @@
 .add-product-form {
   width: 310px;
-  height: 500px;
+  height: 550px;
   margin-top: -40px;
   padding: 15px;
   background-color: white;
@@ -30,7 +30,7 @@
     flex-direction: column;
     align-items: center;
     height: fit-content;
-    margin-top: -30px;
+    margin-top: -70px;
 
     .form-content-middle {
       display: flex;
@@ -42,8 +42,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 15px;
-        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-bottom: 15px;
       }
 
       .priority-and-quantity {
@@ -55,7 +55,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          margin-bottom: 30px;
+          margin-bottom: 25px;
         }
       }
 
@@ -73,17 +73,14 @@
 
   .input-container {
     width: 273px;
-    height: 40px;
+    height: 42.88px;
+    margin-bottom: 15px;
   }
-  .name-input {
-    position: relative;
+  // .name-input {
+  //   .store-input {
 
-    .package-input {
-      position: absolute;
-      right: 4px;
-      bottom: 0;
-    }
-  }
+  //   }
+  // }
 
   .input-ok-message-container {
     display: none;

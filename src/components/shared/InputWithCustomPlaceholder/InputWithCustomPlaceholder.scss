@@ -19,6 +19,7 @@
       height: 100%;
       border: 2px solid #9a2fae;
       background-color: transparent;
+      border-radius: 5px;
 
       padding-left: 20px;
       @include fluid-font-size(768px, 1000px, 14px, 18px);
@@ -26,7 +27,7 @@
 
     .input-field:hover,
     .input-field:focus {
-      outline: 2.2px solid #9a2fae;
+      outline: 0.05px solid #9a2fae;
       background-color: lightcyan;
     }
 

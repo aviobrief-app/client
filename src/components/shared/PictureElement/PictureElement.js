@@ -7,6 +7,7 @@ const PictureElement = ({
     isArchived,
     priority,
     imageUrl,
+    onClick,
 }) => {
     const [styles, setStyles] = useState({
         width: size,
@@ -15,7 +16,7 @@ const PictureElement = ({
         borderColor: isArchived ? 'gray' : priority === 'Now' ? '#E2208A' : '#21C097',
     });
     return (
-        <section className="picture-element" style={styles}>
+        <section className="picture-element" style={styles} onClick={onClick}>
             <img src={imageUrl} alt="" />
         </section>
     )

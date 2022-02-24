@@ -17,10 +17,10 @@ import Label from 'components/shared/Label/Label';
 import InputWithCustomPlaceholder from 'components/shared/InputWithCustomPlaceholder/InputWithCustomPlaceholder';
 import SelectionSlider from 'components/SelectionSlider/SelectionSlider';
 import ProductImageUpload from 'components/ProductImageUpload/ProductImageUpload';
-import ProductPackageDropdownInput from 'components/ProductPackageDropdownInput/ProductPackageDropdownInput';
+import StoreInput from 'components//inputs/StoreInput/StoreInput';
 import QuantityNumericInput from 'components/inputs/QuantityNumericInput/QuantityNumericInput';
 
-import * as productService from 'services/productService';
+import * as storeService from 'services/storeService';
 
 import Loading from 'components/shared/Loading/Loading';
 import './AddPurchaseAndProductForm.scss';
@@ -36,18 +36,18 @@ const AddPurchaseAndProductForm = () => {
 
     const [claimsAreLoading] = useCurrentUserClaims();
     const { addPurchaseAndProduct } = usePurchaseContext();
-    const [productPackages, setProductPackages] = useState(null);
+    const [stores, setStores] = useState(null);
 
 
     useEffect(() => {
-        if(!!productPackages && !claimsAreLoading) {
+        if(!!stores && !claimsAreLoading) {
             setIsLoading(false);
         }
-    }, [productPackages, claimsAreLoading])
+    }, [stores, claimsAreLoading])
 
     useEffect(() => {
-        productService.getAvailableProductPackages()
-            .then(res => setProductPackages(res))
+        storeService.getAvailableStores()
+            .then(res => setStores(() => res.map(store => ({ label: store.name }))))
             .catch(err => console.error(err))
     }, []);
 
@@ -99,7 +99,6 @@ const AddPurchaseAndProductForm = () => {
 
     }
 
-
     return (
         !isLoading && <form className="add-product-form" >
             <div className="form-header">
@@ -112,7 +111,7 @@ const AddPurchaseAndProductForm = () => {
                 <div className="form-content-middle">
 
                     <div className="name-input">
-                        <Label text={'Name/Package:'} />
+                        <Label text={'Name:'} />
                         <div className="input-container">
                             <InputWithCustomPlaceholder
                                 name="productName"
@@ -124,9 +123,10 @@ const AddPurchaseAndProductForm = () => {
                                 validations={addProductFormSchema}
                             />
                         </div>
-                        <div className="package-input">
-                            <ProductPackageDropdownInput
-                                productPackages={productPackages}
+                        <div className="store-input">
+                            <Label text={'Store:'} />
+                            <StoreInput
+                                stores={stores}
                                 publishInputValue={publishInputValue}
                             />
                         </div>
@@ -144,7 +144,7 @@ const AddPurchaseAndProductForm = () => {
                             <Label text={'Qty:'} />
                             <QuantityNumericInput
                                 width={'59px'}
-                                height={'42px'}
+                                height={'40px'}
                                 minValue={1}
                                 maxValue={10}
                                 publishInputValue={publishInputValue}
