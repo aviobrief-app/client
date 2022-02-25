@@ -25,25 +25,42 @@ const Purchases = () => {
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
     const [filteredPurchases, setFilteredPurchases] = useState(orgPurchases);
+    const [filterValues, setFilterValues] = useState({});
 
     const onSearchChange = (e) => {
-        const input = e.target.value;
-
         setFilteredPurchases(orgPurchases.filter(purchase => {
-            const nameContainsInput = purchase.product.productName.includes(input);
-            const storeContainsInput = purchase.store.name.includes(input);
-            const storeNameIsAnyStore = purchase.store.name === 'ANY STORE';
-
-
+            const nameContainsInput = purchase.product.productName.includes(e.target.value);
+            const storeContainsInput = purchase.store.name.includes(e.target.value);
             return (nameContainsInput || storeContainsInput);
         }));
+    }
+
+    useEffect(() => {
+
+        setFilteredPurchases(orgPurchases.filter(purchase => {
+            if(filterValues.store) {
+
+                const storeFiltered = purchase.store.name === filterValues.store;
+                const anySoreLabeled = purchase.store.name === 'ANY STORE';
+
+                return (storeFiltered || anySoreLabeled);
+            }
+
+            return true;
+        }))
+
+    }, [filterValues])
+
+
+
+    const publishFilterValues = (label, value) => {
+        setFilterValues(filterValues => ({ ...filterValues, [label]: value }))
     }
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
         contextSetDisplayModal(true);
     }
-    console.log(orgPurchases);
 
     return (
         <section className="purchases">
@@ -57,7 +74,10 @@ const Purchases = () => {
                     >
                         Add
                     </Button>
-                    <FilterButton />
+                    <FilterButton
+                        publishFilterValues={publishFilterValues}
+                        selectedFilters={Object.keys(filterValues).length}
+                    />
                 </span>
                 <span className="search-field">
                     <SearchBarWithIcon placeholder="search purchases..." onSearchChange={onSearchChange} />

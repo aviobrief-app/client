@@ -6,11 +6,15 @@ import FilterDialog from 'components/pages/Purchases/FilterDialog/FilterDialog';
 
 import './FilterButton.scss';
 const FilterButton = ({
-
+    publishFilterValues,
+    selectedFilters,
 }) => {
 
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
+
+    console.log(selectedFilters,
+    );
 
     return (
         <section className="filter-button">
@@ -25,6 +29,7 @@ const FilterButton = ({
             <FilterDialog
                 open={open}
                 onClose={handleClose}
+                publishFilterValues={publishFilterValues}
             />
         </section>
     )
