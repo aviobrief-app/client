@@ -15,21 +15,17 @@ const PurchaseCard = ({
 }) => {
 
     const [open, setOpen] = useState(false);
-
     const handleClose = () => setOpen(false);
+
     const onProductPictureClick = () => {
         setOpen(true)
     };
 
     const PictureDialog = (props) => {
-        const { onClose, selectedValue, open } = props;
-
-        const handleClose = () => {
-            onClose(selectedValue);
-        };
+        const { open } = props;
 
         return (
-            <Dialog onClose={handleClose} open={open}>
+            <Dialog open={open}>
                 <div className="product-picture-big">
                     <img src={product.image} alt="" />
                 </div>
