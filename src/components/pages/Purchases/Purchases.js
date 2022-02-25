@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
+import FilterButton from 'components/pages/Purchases/FilterButton/FilterButton';
 import SearchBarWithIcon from 'components/shared/SearchBarWithIcon/SearchBarWithIcon';
 import { useModalBackdropContext } from 'contexts/ModalBackdropContext';
 import { usePurchaseContext } from 'contexts/PurchaseContext';
@@ -26,13 +27,23 @@ const Purchases = () => {
     const [filteredPurchases, setFilteredPurchases] = useState(orgPurchases);
 
     const onSearchChange = (e) => {
-        console.log(e.target.value);
+        const input = e.target.value;
+
+        setFilteredPurchases(orgPurchases.filter(purchase => {
+            const nameContainsInput = purchase.product.productName.includes(input);
+            const storeContainsInput = purchase.store.name.includes(input);
+            const storeNameIsAnyStore = purchase.store.name === 'ANY STORE';
+
+
+            return (nameContainsInput || storeContainsInput);
+        }));
     }
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
         contextSetDisplayModal(true);
     }
+    console.log(orgPurchases);
 
     return (
         <section className="purchases">
@@ -46,22 +57,16 @@ const Purchases = () => {
                     >
                         Add
                     </Button>
-                    <Button
-                        className="filter-button"
-                        variant="contained"
-                        startIcon={<FilterListIcon className="add-icon" />}
-                    >
-                        Filter
-                    </Button>
+                    <FilterButton />
                 </span>
                 <span className="search-field">
-                    <SearchBarWithIcon placeholder="search to buy..." onSearchChange={onSearchChange} />
+                    <SearchBarWithIcon placeholder="search purchases..." onSearchChange={onSearchChange} />
                 </span>
             </section>
 
             <section className="purchase-items-list">
                 {orgPurchases
-                    ? orgPurchases
+                    ? filteredPurchases
                         .map(purchase =>
                             purchase.toDisplay && <PurchaseCard
                                 key={purchase._id}

@@ -35,8 +35,6 @@ const PurchaseCard = ({
                 </div>
             </Dialog>
         );
-
-
     }
 
     return (
