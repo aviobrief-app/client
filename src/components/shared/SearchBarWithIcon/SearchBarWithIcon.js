@@ -25,6 +25,7 @@ const SearchBarWithIcon = ({
                 placeholder={placeholder}
                 inputProps={{ 'aria-label': placeholder }}
                 onChange={(e) => onSearchChange(e)}
+                onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault() }}
             />
             <IconButton type="submit" aria-label="search" className="input-icon">
                 <SearchIcon />

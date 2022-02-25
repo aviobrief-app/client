@@ -29,8 +29,8 @@ const Purchases = () => {
 
     const onSearchChange = (e) => {
         setFilteredPurchases(orgPurchases.filter(purchase => {
-            const nameContainsInput = purchase.product.productName.includes(e.target.value);
-            const storeContainsInput = purchase.store.name.includes(e.target.value);
+            const nameContainsInput = purchase.product.productName.toLowerCase().includes(e.target.value.toLowerCase());
+            const storeContainsInput = purchase.store.name.toLowerCase().includes(e.target.value.toLowerCase());
             return (nameContainsInput || storeContainsInput);
         }));
     }

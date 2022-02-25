@@ -13,8 +13,7 @@ const FilterButton = ({
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
 
-    console.log(selectedFilters,
-    );
+    console.log(selectedFilters);
 
     return (
         <section className="filter-button">
