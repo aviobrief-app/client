@@ -5,12 +5,12 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import FilterDialog from 'components/pages/Purchases/FilterDialog/FilterDialog';
 
 import './FilterButton.scss';
-const FilterButton = () => {
+const FilterButton = ({
+
+}) => {
 
     const [open, setOpen] = useState(false);
     const handleClose = () => setOpen(false);
-
-
 
     return (
         <section className="filter-button">
