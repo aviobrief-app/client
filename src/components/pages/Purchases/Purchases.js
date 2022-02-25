@@ -23,6 +23,11 @@ const Purchases = () => {
 
     const { contextDisplayModal, contextSetDisplayModal } = useModalBackdropContext();
     const { orgPurchases } = usePurchaseContext();
+    const [filteredPurchases, setFilteredPurchases] = useState(orgPurchases);
+
+    const onSearchChange = (e) => {
+        console.log(e.target.value);
+    }
 
     const onAddProductButtonClick = (e) => {
         e.preventDefault();
@@ -50,7 +55,7 @@ const Purchases = () => {
                     </Button>
                 </span>
                 <span className="search-field">
-                    <SearchBarWithIcon placeholder="search to buy..." />
+                    <SearchBarWithIcon placeholder="search to buy..." onSearchChange={onSearchChange} />
                 </span>
             </section>
 

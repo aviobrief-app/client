@@ -9,7 +9,8 @@ import './SearchBarWithIcon.scss';
 
 
 const SearchBarWithIcon = ({
-    placeholder
+    placeholder,
+    onSearchChange,
 }) => {
 
     return (
@@ -23,6 +24,7 @@ const SearchBarWithIcon = ({
                 className="input-base"
                 placeholder={placeholder}
                 inputProps={{ 'aria-label': placeholder }}
+                onChange={(e) => onSearchChange(e)}
             />
             <IconButton type="submit" aria-label="search" className="input-icon">
                 <SearchIcon />
